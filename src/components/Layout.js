@@ -3,30 +3,18 @@ import { Link } from 'react-router-dom';
 import { Header, Container, Divider, Icon } from 'semantic-ui-react';
 import FeatherIcon from 'feather-icons-react';
 
-const pullRight = {
+const mainContainer = {
+  width: '100%',
+  height: '100vh',
   display: 'flex',
-  justifyContent: 'flex-end'
-};
-
-const h1 = {
-  marginTop: '10px !important',
-  marginBottom: '20px !important'
-};
-
+  alignItems: 'center',
+  background: '#151530'
+}
 
 const Layout = ({ children }) => {
   return (
-    <Container>
-      <Link to="/">
-        <Header as="h1" style={h1}>
-          metalabs-prototype world
-        </Header>
-      </Link>
+    <Container style={mainContainer}>
       {children}
-      <Divider />
-      <p style={pullRight}>
-        Made with <FeatherIcon icon="heart" /> by Aiste
-      </p>
     </Container>
   );
 };
