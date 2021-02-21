@@ -12,7 +12,9 @@
     "start:dev": "webpack serve"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
     "feather-icons-react": "^0.4.3",
+    "graphql": "^15.5.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
