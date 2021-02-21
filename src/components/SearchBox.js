@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import React from 'react'
 import { Search, Grid, Header, Segment, Container } from 'semantic-ui-react'
+import './layout.css';
 
 const source = [
   {title: 'One', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
@@ -92,6 +93,7 @@ const SearchBox = () => {
 
   return (
       <Search
+        className="aiste"
         loading={loading}
         onResultSelect={
           (e, data) => {

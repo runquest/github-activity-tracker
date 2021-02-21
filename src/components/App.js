@@ -4,6 +4,8 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import NoMatch from './NoMatch';
 
+// import 'semantic-ui-css/semantic.min.css'
+
 const App = () => {
   return (
     <Router>

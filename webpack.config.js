@@ -14,8 +14,7 @@ module.exports = {
   resolve: {
     alias: {
       "react-dom": "@hot-loader/react-dom",
-    },
-    extensions: ['', '.js', '.css',...]
+    }
   },
   devtool: 'inline-source-map',
   module: {
@@ -27,11 +26,50 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
-      // Second Rule
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                exportLocalsConvention: "camelCaseOnly",
+                namedExport: true,
+                compileType: "module",
+                auto: false,
+                exportGlobals: true,
+                // compileType?, auto?, mode?, localIdentName?, localIdentContext?, localIdentHashPrefix?, localIdentRegExp?, getLocalIdent?, namedExport?, exportGlobals?, exportLocalsConvention?, exportOnlyLocals?
+              },
+              sourceMap: true
+            }
+          }
+        ]
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|woff2|ttf|woff|svg|eot)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      // Second Rule
+      // {
+      //   test: /\.css$/i,
+      //   use: ['style-loader', 'css-loader'],
+      // },
       // {
       //   test: /\.css$/i,
       //   use: [
