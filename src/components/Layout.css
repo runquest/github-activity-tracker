@@ -1,0 +1,19 @@
+html {
+  background: green;
+}
+
+/* .ui.search > .input {
+  width: 474px;
+  background: blue;
+} */
+
+.ui.icon.input  {
+  width: 474px;
+  margin-top: 80px;
+  background: white;
+}
+
+.ui.search .prompt {
+  height: 60px;
+  border-radius: 4px;
+}

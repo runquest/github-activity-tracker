@@ -33,13 +33,13 @@ function exampleReducer(state, action) {
 }
 
 
-const container = {
-  width: '474px',
-  height: '60px',
-  borderRadius: '4px',
-  marginTop: '80px',
-  background: 'white'
-}
+// const container = {
+//   width: '474px',
+//   height: '60px',
+//   borderRadius: '4px',
+//   marginTop: '80px',
+//   background: 'white'
+// }
 
 const item = {
   width: '399px',
@@ -55,7 +55,6 @@ const item = {
   color: '#8383AF'
 }
 
-// function SearchBoxe() {
 const SearchBox = () => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
@@ -92,9 +91,7 @@ const SearchBox = () => {
   }, [])
 
   return (
-
-    <Segment>
-      <Search style={container}
+      <Search
         loading={loading}
         onResultSelect={
           (e, data) => {
@@ -106,19 +103,6 @@ const SearchBox = () => {
         value={value}
         resultRenderer={renderSearchResult}
         />
-
-      {/* <Segment>
-        <Header>State</Header>
-        <pre style={{ overflowX: 'auto' }}>
-          {JSON.stringify({ loading, results, value }, null, 2)}
-        </pre>
-        <Header>Options</Header>
-        <pre style={{ overflowX: 'auto' }}>
-          {JSON.stringify(source, null, 2)}
-        </pre>
-      </Segment> */}
-
-    </Segment>
   )
 }
 

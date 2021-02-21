@@ -15,6 +15,7 @@ module.exports = {
     alias: {
       "react-dom": "@hot-loader/react-dom",
     },
+    extensions: ['', '.js', '.css',...]
   },
   devtool: 'inline-source-map',
   module: {
