@@ -1,14 +1,34 @@
-/* html {
-  background: green;
-}
-
-.ui.icon.input  {
+/* .ui.input  {
   width: 474px;
-  margin-top: 80px;
-  background: white;
+  border-radius: 4px;
 }
 
 .ui.search .prompt {
   height: 60px;
   border-radius: 4px;
+}
+
+input.prompt[attribute="placeholder"] {
+  color: #8383AF;
+}
+
+.ui.icon.input>input {
+  padding-left: 24px;
 } */
+
+.search .input {
+  width: 474px;
+  height: 60px;
+  background: white;
+  border-radius: 4px;
+}
+
+.ui.search .prompt {
+  border-radius: 4px;
+}
+
+input[type="text"].prompt::placeholder {
+  color: #8383AF;
+  font-size: 16px;
+  line-height: 18.75px;
+}

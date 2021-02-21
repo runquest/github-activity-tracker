@@ -1,7 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
-import { Search, Grid, Header, Segment, Container } from 'semantic-ui-react'
-import './layout.css';
+import { Search, Grid, Header, Segment, Container, Placeholder } from 'semantic-ui-react'
 
 const source = [
   {title: 'One', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
@@ -66,6 +65,7 @@ const SearchBox = () => {
     console.log("renderSearchResult", props)
   return <Container text style={item}>{props.title}</Container>
   }
+
   const handleSearchChange = React.useCallback((e, data) => {
     clearTimeout(timeoutRef.current)
     dispatch({ type: 'START_SEARCH', query: data.value })
@@ -85,21 +85,34 @@ const SearchBox = () => {
       })
     }, 300)
   }, [])
+
+  const handleOnFocus = (event) => {
+    event.target.placeholder = ""
+  }
+
+  const handleOnBlur = (event) => {
+    event.target.placeholder = "Search a GitHub Repository..."
+  }
+
   React.useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current)
     }
   }, [])
 
+
+
   return (
       <Search
-        className="aiste"
+        placeholder={"Search a GitHub Repository..."}
         loading={loading}
         onResultSelect={
           (e, data) => {
             dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title})
           }
         }
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
         onSearchChange={handleSearchChange}
         results={results}
         value={value}
