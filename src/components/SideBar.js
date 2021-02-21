@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import SearchBox from './SearchBox'
 import SideBarEmptyState from './SideBarEmptyState'
 import InTheListitem from './InTheListitem'
@@ -18,7 +18,6 @@ const SideBar = () => {
     <InTheListitem />
     <SideBarEmptyState />
     <FetchData />
-    <Button>Click here to get data</Button>
   </Segment>
 }
 
