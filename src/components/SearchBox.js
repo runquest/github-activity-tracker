@@ -1,31 +1,6 @@
-// import React from 'react';
-// import {  Search, Grid, Header, Segment } from 'semantic-ui-react';
-
-// const container = {
-//   width: '474px',
-//   height: '60px',
-//   borderRadius: '4px',
-//   marginTop: '80px',
-//   background: 'white'
-// }
-
-
-
-// const SearchBox = () => {
-//   return <Input placeholder='Search a Github Repository' style={container} focus />
-// }
-
-// export default SearchBox;
 import _ from 'lodash'
 import React from 'react'
-import { Search, Grid, Header, Segment } from 'semantic-ui-react'
-
-// const source = _.times(5, () => ({
-//   title: faker.company.companyName(),
-//   description: faker.company.catchPhrase(),
-//   image: faker.internet.avatar(),
-//   price: faker.finance.amount(0, 100, 2, '$'),
-// }))
+import { Search, Grid, Header, Segment, Container } from 'semantic-ui-react'
 
 const source = [
   {title: 'One', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
@@ -66,12 +41,31 @@ const container = {
   background: 'white'
 }
 
+const item = {
+  width: '399px',
+  height: '44px',
+  background: "#ECECF7",
+  fontFamily: 'Roboto',
+  fontstyle: 'normal',
+  fontWeight: 'normal',
+  fontSize: '16px',
+  lineHeight: '19px',
+  display: 'flex',
+  alignitems: 'center',
+  color: '#8383AF'
+}
+
 // function SearchBoxe() {
 const SearchBox = () => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
 
   const timeoutRef = React.useRef()
+
+  const renderSearchResult = (props) => {
+    console.log("renderSearchResult", props)
+  return <Container text style={item}>{props.title}</Container>
+  }
   const handleSearchChange = React.useCallback((e, data) => {
     clearTimeout(timeoutRef.current)
     dispatch({ type: 'START_SEARCH', query: data.value })
@@ -110,9 +104,10 @@ const SearchBox = () => {
         onSearchChange={handleSearchChange}
         results={results}
         value={value}
+        resultRenderer={renderSearchResult}
         />
 
-      <Segment>
+      {/* <Segment>
         <Header>State</Header>
         <pre style={{ overflowX: 'auto' }}>
           {JSON.stringify({ loading, results, value }, null, 2)}
@@ -121,7 +116,7 @@ const SearchBox = () => {
         <pre style={{ overflowX: 'auto' }}>
           {JSON.stringify(source, null, 2)}
         </pre>
-      </Segment>
+      </Segment> */}
 
     </Segment>
   )
