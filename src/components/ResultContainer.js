@@ -40,9 +40,9 @@ const text = {
 const ResultContainer = (data) => {
     return (
     <List className='list' style={resultContainer}>
-      {data.display.map((item) => (
+      {/* {data.display.map((item) => (
         <SelectedItem key={item.node_id} info={item} />
-      ))}
+      ))} */}
      </List>
   );
 }

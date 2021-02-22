@@ -18,16 +18,29 @@ import useFetch from "react-fetch-hook";
 // })
 
 
-export default function FetchData() {
-  const { isLoading, error, data } 
-  = useFetch(" https://api.github.com/repos/facebook/react/stats/commit_activity", {
+export const searchRepos = async () => {
+  console.log("SEARCH REPOS")
+ 
+  const response = await fetch("https://api.github.com/search/repositories?q=React&per_page=6", {
       headers: {
         'Accept': 'application/vnd.github.v3+json',
       }});
 
-    if (isLoading) 
-      return "Loading..."; 
+      const data = await response.json()
 
-    if (error) return "Error!";
-    return data; 
-}
+      return data;
+} 
+
+// export default function FetchData() {
+//   const { isLoading, error, data } 
+//   = useFetch(" https://api.github.com/repos/facebook/react/stats/commit_activity", {
+//       headers: {
+//         'Accept': 'application/vnd.github.v3+json',
+//       }});
+
+//     if (isLoading) 
+//       return "Loading..."; 
+
+//     if (error) return "Error!";
+//     return data; 
+// }
