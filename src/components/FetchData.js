@@ -26,7 +26,7 @@ const FetchData = () => {
         'Accept': 'application/vnd.github.v3+json',
       }});
     if (isLoading) return "Loading..."; if (error) return "Error!";
-    console.log("AISTE", data)
+    // console.log("AISTE", data)
     return ( 
     <>
       <pre>{JSON.stringify(data, null, 2)}</pre> </>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Segment } from 'semantic-ui-react';
 import SearchBox from './SearchBox'
 import SideBarEmptyState from './SideBarEmptyState'
@@ -13,10 +13,12 @@ const container = {
 }
 
 const SideBar = () => {
+    const [visible, setVisibility] = useState(true);
+
   return <Segment style={container}>
-    <SearchBox />
+    <SearchBox onSearch={(value) => setVisibility(value)} onSelect={{((value) => setResult(value))}}/>
     {/* <InTheListitem /> */}
-    {/* <SideBarEmptyState /> */}
+    <SideBarEmptyState visibility={visible} />
     {/* <FetchData /> */}
   </Segment>
 }

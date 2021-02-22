@@ -10,7 +10,7 @@ const container = {
   background: '#242432',
   padding: '16px 32px',
   color: 'lightgrey',
-  display: 'flex',
+  // display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
@@ -27,7 +27,9 @@ const text = {
 
 
 
-const SideBarEmptyState = () => {
+const SideBarEmptyState = ({visibility}) => {
+  if (!visibility) return null;
+
   return <Segment style={container}>
     <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
     <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
