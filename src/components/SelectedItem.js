@@ -100,9 +100,9 @@ const repo = {
 
 
 const SelectedItem = (props) => {
-  // console.log("SELECTED ITEM", props)
+  console.log("SELECTED ITEM", props)
   return <Segment style={container}>
-    <div style={title} text><span style={owner}>owner</span> / <span style={repo}>repoasdfasdfsadfsadfasdfsdafsdfasfasdfsdfasdfsdf</span></div>
+    <div style={title}><span style={owner}>owner</span> / <span style={repo}>repoasdfasdfsadfsadfasdfsdafsdfasfasdfsdfasdfsdf</span></div>
     <div>
       <FeatherIcon 
         size="10px" 
