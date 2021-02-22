@@ -15,9 +15,9 @@ const container = {
 const SideBar = () => {
   return <Segment style={container}>
     <SearchBox />
-    <InTheListitem />
-    <SideBarEmptyState />
-    <FetchData />
+    {/* <InTheListitem /> */}
+    {/* <SideBarEmptyState /> */}
+    {/* <FetchData /> */}
   </Segment>
 }
 

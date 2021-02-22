@@ -1,8 +1,12 @@
 import _ from 'lodash'
 import React from 'react'
 import { Search, Grid, Header, Segment, Container, Placeholder } from 'semantic-ui-react'
+import SearchResultItem from './SearchResultItem'
+import FeatherIcon from 'feather-icons-react';
+
 
 const source = [
+  {title: 'Oneai', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
   {title: 'One', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
   {title: 'Two', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
   {title: 'Three', description: 'One description', image: 'https://78.media.tumblr.com/9470752623379d94186a87ef5b542d24/tumblr_os2qokbEnP1qfvq9bo1_500h.jpg', price: '$17'},
@@ -32,15 +36,6 @@ function exampleReducer(state, action) {
   }
 }
 
-
-// const container = {
-//   width: '474px',
-//   height: '60px',
-//   borderRadius: '4px',
-//   marginTop: '80px',
-//   background: 'white'
-// }
-
 const item = {
   width: '399px',
   height: '44px',
@@ -55,15 +50,24 @@ const item = {
   color: '#8383AF'
 }
 
+const icon = {
+  position: 'absolute',
+  top: '25%',
+  right: '20px',
+  transform: 'rotate(-23.02deg)'
+}
+
 const SearchBox = () => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
 
   const timeoutRef = React.useRef()
+const searchIcon = () => {
+  return <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />;
 
+}
   const renderSearchResult = (props) => {
-    console.log("renderSearchResult", props)
-  return <Container text style={item}>{props.title}</Container>
+    return <SearchResultItem data={props}/>
   }
 
   const handleSearchChange = React.useCallback((e, data) => {
@@ -116,6 +120,8 @@ const SearchBox = () => {
         onSearchChange={handleSearchChange}
         results={results}
         value={value}
+        fluid={true}
+        icon={<FeatherIcon style={icon} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />}
         resultRenderer={renderSearchResult}
         />
   )
