@@ -14,18 +14,18 @@ const container = {
 
 const SideBar = () => {
   const [visible, setVisibility] = useState(true);
-  // const [data, setResult] = useState();
+  const [result, setResult] = useState([]);
 
-// onSelect={(value) => setResult(value)}/>
   return <Segment style={container}>
     <SearchBox 
       onSearch={(value) => setVisibility(value)} 
-      onSelect={(value) => setResult(value)}/>
+      onSelect={(value) => {
+        setResult(result => [...result, value]);
+        }}/>
 
     <ResultContainer 
-      visibility={visible} 
-      display={source} />
-    {/* <FetchData /> */}
+      visibility={true} 
+      display={result} />
   </Segment>
 }
 

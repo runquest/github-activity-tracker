@@ -6,8 +6,7 @@ const container = {
   height: '44px',
 }
 const SearchResultItem = ({data}) => {
-  console.log("SEARCH RESULT ITEM", data)
-  return <Container text style={container}>{data.full_name}</Container>
+  return <Container text style={container}>{data.title}</Container>
 }
 
 export default SearchResultItem;

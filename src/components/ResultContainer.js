@@ -38,11 +38,13 @@ const text = {
 
 
 const ResultContainer = (data) => {
+    // console.log("RSULT CONTAINER", data.display)
     return (
     <List className='list' style={resultContainer}>
-      {/* {data.display.map((item) => (
-        <SelectedItem key={item.node_id} info={item} />
-      ))} */}
+      {data.display.map((item) => (
+        <SelectedItem key={Math.random()*1000} info={item} />
+        // <SelectedItem key={item.childKey} info={item} />
+      ))}
      </List>
   );
 }

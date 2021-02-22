@@ -104,18 +104,18 @@ const handleFocus = (event) => {
 
 
 const SelectedItem = (props) => {
-  // console.log("SELECTED ITEM", props)
+  console.log("SELECTED ITEM", props.info)
   return <Segment className="listItem" style={container}  
   onMouseEnter={() => {}}
         onMouseLeave={() =>  {}}>
-    <div style={title}><span style={owner}>owner</span> / <span style={repo}>repoasdfasdfsadfsadfasdfsdafsdfasfasdfsdfasdfsdf</span></div>
+    <div style={title}><span style={owner}>{props.info.owner}</span> / <span style={repo}>{props.info.name}</span></div>
     <div>
       <FeatherIcon 
         size="10px" 
         stroke="#bcbcf2" 
         strokeWidth="1px" 
         icon="star" />
-      <span style={starred}>92.8k</span>
+      <span style={starred}>{props.info.stars}</span>
       <span style={updated}>Updated 2 hours ago</span>
      </div>
   </Segment>
