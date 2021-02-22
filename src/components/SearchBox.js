@@ -78,6 +78,7 @@ const initialState = {
   loading: false,
   results: [],
   value: '',
+  placeholder: "Search a GitHub Repository...",
 }
 
 function exampleReducer(state, action) {
@@ -89,7 +90,7 @@ function exampleReducer(state, action) {
     case 'FINISH_SEARCH':
       return { ...state, loading: false, results: action.results }
     case 'UPDATE_SELECTION':
-      return { ...state, value: action.selection }
+      return { ...state, value: '' }
 
     default:
       throw new Error()
@@ -119,23 +120,20 @@ const iconStyle = {
 
 const SearchBox = (props) => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
-  const { loading, results, value } = state
+  const { loading, results, value, placeholder } = state
 
   const timeoutRef = React.useRef()
 
   const renderSearchResult = (props) => {
-    // console.log('renderSearchResult')
     return <SearchResultItem data={props}/>
   }
 
   const handleSearchChange = React.useCallback((e, data) => {
-    console.log("handleSearchChange")
       clearTimeout(timeoutRef.current)
       dispatch({ type: 'START_SEARCH', query: data.value })
 
       timeoutRef.current = setTimeout(() => {
         if (data.value.length === 0) {
-          dispatch({ type: 'CLEAN_QUERY' })
           props.onSearch(true)
           return
         }
@@ -150,8 +148,9 @@ const SearchBox = (props) => {
 
         dispatch({
           type: 'FINISH_SEARCH',
-          results: list,
-          results: list.slice(0, 3),
+          // results: list,
+          results: list.slice(0, 3)
+          //  dispatch({ type: 'CLEAN_QUERY' })
         })
       }, 300)
     }, []
@@ -162,7 +161,8 @@ const SearchBox = (props) => {
   }
 
   const handleOnBlur = (event) => {
-    event.target.placeholder = "Search a GitHub Repository..."
+     dispatch({ type: 'CLEAN_QUERY' })
+    event.target.placeholder = placeholder
   }
 
   React.useEffect(() => {
@@ -176,15 +176,14 @@ const SearchBox = (props) => {
   }
 
   const handleResultSelection = (event, data) => {
-    console.log("handleResultSelection" , data.result)
-    props.onSelect(false)
-    dispatch({ type: 'UPDATE_SELECTION', selection: data.result})
+    props.onSelect(data.result)
+    dispatch({ type: 'CLEAN_QUERY' })
   }
 
   return (
       <Search
-        placeholder={"Search a GitHub Repository..."}
-        loading={true}
+        placeholder={placeholder}
+        loading={loading}
         onResultSelect={handleResultSelection}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}

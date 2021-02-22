@@ -1,6 +1,7 @@
 import React from 'react';
 import { Segment, Container } from 'semantic-ui-react';
 import FeatherIcon from 'feather-icons-react';
+import SelectedItem from './SelectedItem'
 
 
 const container = {
@@ -27,18 +28,20 @@ const text = {
 
 
 
-const ResultContainer = ({visibility, display}) => {
-  // if (!visibility) 
-  //   return null;
+const ResultContainer = (data) => {
+  console.log("RC Data", data.display)
+  if (data.visibility) {
+    return <Segment style={container}>
+     <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
+     <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
+   </Segment>
+  } 
 
-  // if (!data)
-  //   return null;
+  if (data.display) {
+    return <SelectedItem info={data.display} />
+  }
 
-  // console.log("RC: " + visibility + " :: data: " + display)
-  return <Segment style={container}>
-    <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
-    <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
-  </Segment>
+  return null;
 }
 
 export default ResultContainer;

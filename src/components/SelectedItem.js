@@ -12,7 +12,8 @@ const container = {
 }
 
 
-const InTheListitem = (props) => {
+const SelectedItem = (props) => {
+  console.log("SELECTED ITEM", props)
   return <Segment style={container}>
     <Container text>flutter / flutter</Container>
     <FeatherIcon size="32" stroke="#bcbcf2" strokeWidth="4px" icon="star" />
@@ -22,4 +23,4 @@ const InTheListitem = (props) => {
   </Segment>
 }
 
-export default InTheListitem;
+export default SelectedItem;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Segment, Container } from 'semantic-ui-react';
 import SearchBox from './SearchBox'
 import ResultContainer from './ResultContainer'
-import InTheListitem from './InTheListitem'
 import FetchData from './FetchData'
 
 const container = {
@@ -14,13 +13,14 @@ const container = {
 
 const SideBar = () => {
   const [visible, setVisibility] = useState(true);
-  const [data, setResult] = useState( {} );
+  const [data, setResult] = useState();
 
-
+// onSelect={(value) => setResult(value)}/>
   return <Segment style={container}>
     <SearchBox 
       onSearch={(value) => setVisibility(value)} 
       onSelect={(value) => setResult(value)}/>
+
     <ResultContainer 
       visibility={visible} 
       display={data} />
