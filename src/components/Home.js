@@ -11,7 +11,6 @@ const container = {
   flexDirection: 'row'
 }
 
-
 const Home = () => {
   return (
     <Layout>

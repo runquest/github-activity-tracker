@@ -12,6 +12,7 @@
     "start:dev": "webpack serve"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "feather-icons-react": "^0.4.3",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",

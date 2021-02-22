@@ -1,8 +1,11 @@
 import _ from 'lodash'
 import React from 'react'
-import { Search, Grid, Header, Segment, Container, Placeholder } from 'semantic-ui-react'
+import { Search, Grid, Header, Segment, Container } from 'semantic-ui-react'
 import SearchResultItem from './SearchResultItem'
 import FeatherIcon from 'feather-icons-react';
+import axios from 'axios'
+import FetchData from './FetchData'
+import CustomSearchIcon from './CustomSearchIcon'
 
 const source = [
 
@@ -97,27 +100,6 @@ function exampleReducer(state, action) {
   }
 }
 
-const item = {
-  width: '399px',
-  height: '44px',
-  background: "#ECECF7",
-  fontFamily: 'Roboto',
-  fontstyle: 'normal',
-  fontWeight: 'normal',
-  fontSize: '16px',
-  lineHeight: '19px',
-  display: 'flex',
-  alignitems: 'center',
-  color: '#8383AF'
-}
-
-const iconStyle = {
-  position: 'absolute',
-  top: '50%',
-  right: '24px',
-  transform: 'translateY(-50%) rotate(-23.02deg)'
-}
-
 const SearchBox = (props) => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value, placeholder } = state
@@ -139,19 +121,33 @@ const SearchBox = (props) => {
         }
 
         props.onSearch(false)
+        console.log("ULO", data.value)
         const re = new RegExp(_.escapeRegExp(data.value), 'i')
-        const isMatch = (result) => {
-          return  re.test(result.title)
-        }
+        console.log("ULO", re)
+        
+        // console.log("list", getDataList())
+        // const isMatch = (result) => {
+        //   return  re.test(result.title)
+        // }
 
-        const list = _.filter(source, isMatch);
+        // const list = _.filter(source, isMatch);
 
-        dispatch({
-          type: 'FINISH_SEARCH',
-          // results: list,
-          results: list.slice(0, 3)
-          //  dispatch({ type: 'CLEAN_QUERY' })
-        })
+        const list = 
+        fetch("https://api.github.com/search/repositories?q=react%20in%3Aname%20in%3Adescription", {
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+        }})
+        .done(response => console.log("RESPONSE", response)
+          // dispatch({
+          //   type: 'FINISH_SEARCH',
+          //   // results: list,
+          //   results: list.slice(0, 3)
+          //   //  dispatch({ type: 'CLEAN_QUERY' })
+          // })
+        );
+        // console.log("list  1223")
+
+        
       }, 300)
     }, []
   )
@@ -171,16 +167,7 @@ const SearchBox = (props) => {
     }
   }, [])
 
-  const customSearchIcon = () => {
-    return (<FeatherIcon 
-      style={iconStyle} 
-      size="16px" 
-      stroke="#34374a" 
-      strokeWidth="2px" 
-      icon="search" />);
-  }
-
-  const handleResultSelection = (event, data) => {
+  const handleResultSelection = ({data}) => {
     props.onSelect(data.result)
     dispatch({ type: 'CLEAN_QUERY' })
   }
@@ -197,7 +184,7 @@ const SearchBox = (props) => {
         value={value}
         fluid={true}
         minCharacters={3}
-        icon={{ children: customSearchIcon }}
+        icon={{ children: <CustomSearchIcon /> }}
         resultRenderer={renderSearchResult}
         />
   )

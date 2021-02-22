@@ -38,16 +38,6 @@ const text = {
 
 
 const ResultContainer = (data) => {
-  // console.log("RC Data", data.display)
-  // if (data.visibility) {
-  //   return <Segment style={container}>
-  //    <FeatherIcon style={text} size="32px" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
-  //    <div style={text}>Search for a GitHub repository to populate graph</div>
-  //  </Segment>
-  // } 
-
-
-  // if (data.display) {
     return (
     <List className='list' style={resultContainer}>
       {data.display.map((item) => (
@@ -55,9 +45,6 @@ const ResultContainer = (data) => {
       ))}
      </List>
   );
-//   }
-
-//  return null;
 }
 
 export default ResultContainer;
