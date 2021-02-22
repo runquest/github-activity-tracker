@@ -112,10 +112,10 @@ const item = {
 }
 
 const iconStyle = {
-  position: 'absolute',
-  top: '25%',
-  right: '20px',
-  transform: 'rotate(-23.02deg)'
+  position: 'relative',
+  top: '50%',
+  right: '24px',
+  transform: 'translateY(-50%) rotate(-23.02deg)'
 }
 
 const SearchBox = (props) => {
@@ -172,7 +172,12 @@ const SearchBox = (props) => {
   }, [])
 
   const customSearchIcon = () => {
-    return (<FeatherIcon style={iconStyle} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />);
+    return (<FeatherIcon 
+      style={iconStyle} 
+      size="16px" 
+      stroke="#34374a" 
+      strokeWidth="2px" 
+      icon="search" />);
   }
 
   const handleResultSelection = (event, data) => {

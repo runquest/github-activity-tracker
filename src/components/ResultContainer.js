@@ -29,19 +29,19 @@ const text = {
 
 
 const ResultContainer = (data) => {
-  console.log("RC Data", data.display)
-  if (data.visibility) {
-    return <Segment style={container}>
-     <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
-     <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
-   </Segment>
-  } 
+  // console.log("RC Data", data.display)
+  // if (data.visibility) {
+  //   return <Segment style={container}>
+  //    <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
+  //    <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
+  //  </Segment>
+  // } 
 
-  if (data.display) {
+  // if (data.display) {
     return <SelectedItem info={data.display} />
-  }
+  // }
 
-  return null;
+  // return null;
 }
 
 export default ResultContainer;
