@@ -1,6 +1,7 @@
 import React from 'react';
 import { Segment, Container } from 'semantic-ui-react';
 import FeatherIcon from 'feather-icons-react';
+import ReactTimeAgo from 'react-time-ago'
 
 const container = {
   width: '474px',
@@ -116,7 +117,7 @@ const SelectedItem = (props) => {
         strokeWidth="1px" 
         icon="star" />
       <span style={starred}>{props.info.stars}</span>
-      <span style={updated}>Updated 2 hours ago</span>
+      <span style={updated}><ReactTimeAgo date={Date.parse(props.info.updated)} /></span>
      </div>
   </Segment>
 }
