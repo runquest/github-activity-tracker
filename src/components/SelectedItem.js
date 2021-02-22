@@ -98,10 +98,16 @@ const repo = {
   textAlign: 'left'
 }
 
+const handleFocus = (event) => {
+  console.log("HANDLE FOCUS")
+}
+
 
 const SelectedItem = (props) => {
   console.log("SELECTED ITEM", props)
-  return <Segment style={container}>
+  return <Segment className="listItem" style={container}  
+  onMouseEnter={() => console.log("ON MOURSE ENTER")}
+        onMouseLeave={() =>  console.log("onMouseLeave")}>
     <div style={title}><span style={owner}>owner</span> / <span style={repo}>repoasdfasdfsadfsadfasdfsdafsdfasfasdfsdfasdfsdf</span></div>
     <div>
       <FeatherIcon 

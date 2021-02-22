@@ -112,7 +112,7 @@ const item = {
 }
 
 const iconStyle = {
-  position: 'relative',
+  position: 'absolute',
   top: '50%',
   right: '24px',
   transform: 'translateY(-50%) rotate(-23.02deg)'

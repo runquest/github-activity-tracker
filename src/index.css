@@ -54,3 +54,12 @@ input[type="text"].prompt::placeholder {
 .ui.search>.results .result:hover {
   background: #ECECF7;
 }
+
+.list:hover {
+  background: green;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  opacity: 0.5;
+}

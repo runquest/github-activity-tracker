@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React from 'react';
 
-import { Segment, Container } from 'semantic-ui-react';
+import { Segment, List } from 'semantic-ui-react';
 import FeatherIcon from 'feather-icons-react';
 import SelectedItem from './SelectedItem'
 
@@ -39,25 +39,25 @@ const text = {
 
 const ResultContainer = (data) => {
   // console.log("RC Data", data.display)
-  if (data.visibility) {
-    return <Segment style={container}>
-     <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
-     <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
-   </Segment>
-  } 
+  // if (data.visibility) {
+  //   return <Segment style={container}>
+  //    <FeatherIcon style={text} size="32px" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
+  //    <div style={text}>Search for a GitHub repository to populate graph</div>
+  //  </Segment>
+  // } 
 
 
-  if (data.display) {
+  // if (data.display) {
     return (
-    <Segment style={resultContainer}>
+    <List className='list' style={resultContainer}>
       {data.display.map((item) => (
         <SelectedItem key={item.node_id} info={item} />
       ))}
-     </Segment>
+     </List>
   );
-  }
+//   }
 
- return null;
+//  return null;
 }
 
 export default ResultContainer;
