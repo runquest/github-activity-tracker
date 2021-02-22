@@ -674,6 +674,7 @@ const SearchBox = (props) => {
               owner: item.owner.login,
               updated: item.updated_at,
               stars: item.stargazers_count,
+              color: Math.floor(Math.random()*16777215).toString(16)
             }));
 
 

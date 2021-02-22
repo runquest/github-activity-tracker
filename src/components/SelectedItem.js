@@ -105,18 +105,23 @@ const handleFocus = (event) => {
 
 
 const SelectedItem = (props) => {
+
+  const customBoxShadow = {
+    boxShadow: `inset 8px 0px 0px #${props.info.color}`
+  }
+
   console.log("SELECTED ITEM", props.info)
-  return <Segment className="listItem" style={container}  
+  return <Segment className="listItem" style={{...container, ...customBoxShadow}}
   onMouseEnter={() => {}}
         onMouseLeave={() =>  {}}>
-    <div style={title}><span style={owner}>{props.info.owner}</span> / <span style={repo}>{props.info.name}</span></div>
+    <div style={{...title}}><span style={owner}>{props.info.owner}</span> / <span style={repo}>{props.info.name}</span></div>
     <div>
       <FeatherIcon 
         size="10px" 
         stroke="#bcbcf2" 
         strokeWidth="1px" 
         icon="star" />
-      <span style={starred}>{props.info.stars}</span>
+      <span style={starred}>{props.info.stars.toLocaleString()}k</span>
       <span style={updated}><ReactTimeAgo date={Date.parse(props.info.updated)} /></span>
      </div>
   </Segment>
