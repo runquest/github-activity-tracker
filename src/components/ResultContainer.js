@@ -27,13 +27,18 @@ const text = {
 
 
 
-const SideBarEmptyState = ({visibility}) => {
-  if (!visibility) return null;
+const ResultContainer = ({visibility, display}) => {
+  // if (!visibility) 
+  //   return null;
 
+  // if (!data)
+  //   return null;
+
+  // console.log("RC: " + visibility + " :: data: " + display)
   return <Segment style={container}>
     <FeatherIcon style={text} size="32" stroke="#bcbcf2" strokeWidth="4px" icon="search" />
     <Container text style={text}><p>Search for a GitHub repository to populate graph</p></Container>
   </Segment>
 }
 
-export default SideBarEmptyState;
+export default ResultContainer;
