@@ -5,26 +5,6 @@ import { List } from 'semantic-ui-react'
 import { Search } from 'react-feather'
 import SelectedItem from './SelectedItem'
 
-// const container = {
-//   width: '473px',
-//   height: 'auto',
-//   height: '208px',
-//   cornerRadius: '16px',
-//   background: '#242432',
-//   padding: '16px 32px',
-//   color: 'lig  htgrey',
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-// }
-
-const resultContainer = {
-  background: 'inherit',
-  boxSizing: 'border-box',
-  padding: '0',
-}
-
 const text = {
   fontFamily: 'Roboto',
   width: '100%',
@@ -52,10 +32,8 @@ const ResultContainer = ({ items }) => {
     )
   }
 
-  items.map((item) => console.log('RC', item))
-
   return (
-    <List className="list" style={resultContainer}>
+    <List className="ResultsList">
       {items.map((item) => (
         <SelectedItem
           active={item === chosen}
