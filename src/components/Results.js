@@ -14,40 +14,38 @@ const text = {
   color: '#bcbcf2',
 }
 
-const Results = (items) => {
-  console.log('RESULTS items', items)
-  return <div></div>
-  // const [chosen, setChosen] = useState(null)
+const Results = ({ items }) => {
+  const [chosen, setChosen] = useState(null)
 
-  // if (!items || items.length < 1) {
-  //   return (
-  //     <div className="EmptyStateContainer">
-  //       <div className="EmptyStateMessage">
-  //         <Search
-  //           color={'#BCBCF2'}
-  //           size={32}
-  //           style={{ marginBottom: '16px' }}
-  //         />
-  //         <div>Search for a GitHub repository to populate graph</div>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+  if (!items || items.length < 1) {
+    return (
+      <div className="EmptyStateContainer">
+        <div className="EmptyStateMessage">
+          <Search
+            color={'#BCBCF2'}
+            size={32}
+            style={{ marginBottom: '16px' }}
+          />
+          <div>Search for a GitHub repository to populate graph</div>
+        </div>
+      </div>
+    )
+  }
 
-  // return (
-  //   <List className="ResultsList">
-  //     {items.map((item) => (
-  //       <SelectedItem
-  //         active={item === chosen}
-  //         onHover={() => setChosen(item)}
-  //         // onClick={data.onClick(item)}
-  //         onLeaveHover={() => setChosen(null)}
-  //         key={Math.random() * 1000}
-  //         info={item.result}
-  //       />
-  //     ))}
-  //   </List>
-  // )
+  return (
+    <List className="ResultsList">
+      {items.map((item) => (
+        <SelectedItem
+          active={item === chosen}
+          onHover={() => setChosen(item)}
+          // onClick={data.onClick(item)}
+          onLeaveHover={() => setChosen(null)}
+          key={Math.random() * 1000}
+          info={item.result}
+        />
+      ))}
+    </List>
+  )
 }
 
 export default Results

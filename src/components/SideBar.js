@@ -3,7 +3,7 @@ import SearchInput from './SearchInput'
 import Results from './Results'
 
 const Sidebar = ({ onUpdate }) => {
-  const [result, setResult] = useState({})
+  const [result, setResult] = useState([])
 
   // const handleSelect = (event, value) => {
   //   setResult((result) => [...result, value])
