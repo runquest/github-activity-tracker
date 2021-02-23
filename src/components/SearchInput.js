@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React, { useState } from 'react'
-import SearchResultItem from './SearchResultItem'
-import { searchRepos } from './FetchData'
+import Suggestion from './Suggestion'
+import { searchForRepo } from '../data/api'
 import { Search } from 'semantic-ui-react'
 
 const SearchInput = ({ onSelect }) => {
@@ -16,7 +16,7 @@ const SearchInput = ({ onSelect }) => {
   const timeoutRef = React.useRef()
 
   const renderSearchResult = (props) => {
-    return <SearchResultItem data={props} />
+    return <Suggestion data={props} />
   }
 
   const handleSearchChange = React.useCallback((e, input) => {
@@ -29,26 +29,30 @@ const SearchInput = ({ onSelect }) => {
       }
 
       const re = new RegExp(_.escapeRegExp(input.value), 'i')
-      // searchRepos().then((response) => {
-
-      //   const data1 = response.items.map((item) => ({
-      //       childKey: item.id,
-      //       id: item.id,
-      //       title: item.full_name,
-      //       full_name: item.full_name,
-      //     }));
-      const list = items.map((item) => ({
-        childKey: item.id,
-        id: item.id,
-        title: item.full_name,
-        name: item.name,
-        owner: item.owner.login,
-        updated: item.updated_at,
-        stars: item.stargazers_count,
-        color: Math.floor(Math.random() * 16777215).toString(16),
-      }))
-      setLoading(false)
-      setResults(list.slice(0, 3))
+      searchForRepo(re).then((response) => {
+        const list = response.items.map((item) => ({
+          childKey: item.id,
+          id: item.id,
+          title: item.full_name,
+          name: item.name,
+          owner: item.owner.login,
+          updated: item.updated_at,
+          stars: item.stargazers_count,
+          color: Math.floor(Math.random() * 16777215).toString(16),
+        }))
+        // const list = items.map((item) => ({
+        //   childKey: item.id,
+        //   id: item.id,
+        //   title: item.full_name,
+        //   name: item.name,
+        //   owner: item.owner.login,
+        //   updated: item.updated_at,
+        //   stars: item.stargazers_count,
+        //   color: Math.floor(Math.random() * 16777215).toString(16),
+        // }))
+        setLoading(false)
+        setResults(list.slice(0, 3))
+      })
     }, 300)
   }, [])
 

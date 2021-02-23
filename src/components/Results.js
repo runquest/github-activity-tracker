@@ -14,7 +14,7 @@ const text = {
   color: '#bcbcf2',
 }
 
-const ResultContainer = ({ items }) => {
+const Results = ({ items }) => {
   const [chosen, setChosen] = useState(null)
 
   if (!items || items.length < 1) {
@@ -48,4 +48,4 @@ const ResultContainer = ({ items }) => {
   )
 }
 
-export default ResultContainer
+export default Results

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import SearchInput from './SearchInput'
-import ResultContainer from './ResultContainer'
+import Results from './Results'
 
 const Sidebar = () => {
   const [result, setResult] = useState([])
@@ -14,7 +14,7 @@ const Sidebar = () => {
         }}
       />
 
-      <ResultContainer items={result} />
+      <Results items={result} />
     </div>
   )
 }
