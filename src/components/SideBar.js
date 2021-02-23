@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Segment, Container } from 'semantic-ui-react';
+import React, { useState } from 'react'
+import { Segment, Container } from 'semantic-ui-react'
 import SearchBox from './SearchBox'
 import ResultContainer from './ResultContainer'
 import FetchData from './FetchData'
@@ -9,24 +9,29 @@ const container = {
   width: '538px',
   height: '900px',
   background: '#37374A',
-  marginTop: '0px'
+  marginTop: '0px',
 }
 
 const SideBar = () => {
-  const [visible, setVisibility] = useState(true);
-  const [result, setResult] = useState([]);
+  const [visible, setVisibility] = useState(true)
+  const [result, setResult] = useState([])
 
-  return <Segment style={container}>
-    <SearchBox 
-      onSearch={(value) => setVisibility(value)} 
-      onSelect={(value) => {
-        setResult(result => [...result, value]);
-        }}/>
+  return (
+    <Segment style={container}>
+      <SearchBox
+        onSearch={(value) => setVisibility(value)}
+        onSelect={(value) => {
+          setResult((result) => [...result, value])
+        }}
+      />
 
-    <ResultContainer 
-      visibility={true} 
-      display={result} />
-  </Segment>
+      <ResultContainer
+        visibility={true}
+        display={result}
+        onClick={(item) => console.log('SB onclick', item)}
+      />
+    </Segment>
+  )
 }
 
-export default SideBar;
+export default SideBar

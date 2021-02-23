@@ -7,7 +7,7 @@ import axios from 'axios'
 import {searchRepos} from './FetchData'
 import CustomSearchIcon from './CustomSearchIcon'
 
-const initialState = {
+const initialState =          {
   loading: false,
   results: {},
   value: '',
@@ -644,7 +644,7 @@ const SearchBox = (props) => {
     return <SearchResultItem data={props}/>
   }
 
-  const handleSearchChange = React.useCallback((e, data) => {
+        const handleSearchChange = React.useCallback((e, data) => {
       clearTimeout(timeoutRef.current)
       dispatch({ type: 'START_SEARCH', query: data.value })
 
@@ -707,7 +707,7 @@ const SearchBox = (props) => {
     dispatch({ type: 'CLEAN_QUERY' })
   }
 
-  return (
+      return ( 
       <Search
         placeholder={placeholder}
         loading={loading}

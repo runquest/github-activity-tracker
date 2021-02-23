@@ -1,6 +1,7 @@
-import React from 'react';
-import { Segment, Container } from 'semantic-ui-react';
-import FeatherIcon from 'feather-icons-react';
+import React, { useState } from 'react'
+import { Segment, Container } from 'semantic-ui-react'
+
+import FeatherIcon from 'feather-icons-react'
 import ReactTimeAgo from 'react-time-ago'
 
 const container = {
@@ -9,11 +10,14 @@ const container = {
   cornerRadius: '4px',
   padding: '16px, 8px, 16px, 24px',
   background: '#272736',
-  boxShadow: 'inset 8px 0px 0px #D65C5C'
+  boxShadow: 'inset 8px 0px 0px #D65C5C',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 }
 
 const description = {
-  display: 'flex'
+  display: 'flex',
 }
 
 const title = {
@@ -32,12 +36,11 @@ const title = {
   textAlign: 'left',
   color: '#BFBDD9',
 
-
-textOverflow: 'ellipsis',
+  textOverflow: 'ellipsis',
 
   /* Required for text-overflow to do anything */
   whiteSpace: 'nowrap',
-  overflow: 'hidden'
+  overflow: 'hidden',
 
   // // font-family: Roboto;
   // font-size: 18px;
@@ -52,21 +55,17 @@ textOverflow: 'ellipsis',
   // line-height: 21px;
   // letter-spacing: 0em;
   // text-align: left;
-
-
 }
 
 const starred = {
- 
-fontSize: '14px',
-fontStyle: 'normal',
-fontWeight: '700',
-lineHeight: '16px',
-letterSpacing: '0em',
-textAlign: 'left',
-padding: '4px',
-color: '#fff',
-
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: '700',
+  lineHeight: '16px',
+  letterSpacing: '0em',
+  textAlign: 'left',
+  padding: '4px',
+  color: '#fff',
 }
 
 const updated = {
@@ -77,18 +76,16 @@ const updated = {
   letterSpacing: '0em',
   textAlign: 'left',
   color: '#bfbdd9',
-  padding: '4px'
+  padding: '4px',
 }
 
 const owner = {
-
   fontSize: '18px',
   fontStyle: 'normal',
   fontWeight: '700',
   lineHeight: '21px',
-  letterSpacing:' 0em',
-  textAlign: 'left'
-
+  letterSpacing: ' 0em',
+  textAlign: 'left',
 }
 
 const repo = {
@@ -96,35 +93,68 @@ const repo = {
   fontSize: '18px',
   lineHeight: '21px',
   letterSpacing: '0em',
-  textAlign: 'left'
+  textAlign: 'left',
 }
 
 const handleFocus = (event) => {
   // console.log("HANDLE FOCUS")
 }
 
-
 const SelectedItem = (props) => {
-
+  const [active, setActive] = useState(false)
+  // const [result, setResult] = useState([])
   const customBoxShadow = {
-    boxShadow: `inset 8px 0px 0px #${props.info.color}`
+    boxShadow: `inset 8px 0px 0px #${props.info.color}`,
   }
 
-  console.log("SELECTED ITEM", props.info)
-  return <Segment className="listItem" style={{...container, ...customBoxShadow}}
-  onMouseEnter={() => {}}
-        onMouseLeave={() =>  {}}>
-    <div style={{...title}}><span style={owner}>{props.info.owner}</span> / <span style={repo}>{props.info.name}</span></div>
-    <div>
-      <FeatherIcon 
-        size="10px" 
-        stroke="#bcbcf2" 
-        strokeWidth="1px" 
-        icon="star" />
-      <span style={starred}>{props.info.stars.toLocaleString()}k</span>
-      <span style={updated}><ReactTimeAgo date={Date.parse(props.info.updated)} /></span>
-     </div>
-  </Segment>
+  const activestyle = {
+    display: 'block',
+  }
+
+  const inactive = {
+    display: 'none',
+  }
+  console.log('props', props)
+  return (
+    <Segment
+      className={active ? 'listItem' : 'listItem inactive'}
+      style={{ ...container, ...customBoxShadow }}
+      onMouseEnter={() => {
+        setActive(true)
+        props.onHover
+      }}
+      onMouseLeave={() => {
+        setActive(false)
+      }}
+      onClick={props.onClick}
+    >
+      <div>
+        <div style={{ ...title }}>
+          <span style={owner}>{props.info.owner}</span> /
+          <span style={repo}>{props.info.name}</span>
+        </div>
+        <div>
+          <FeatherIcon
+            size="10px"
+            stroke="#bcbcf2"
+            strokeWidth="1px"
+            icon="star"
+          />
+          <span style={starred}>{props.info.stars.toLocaleString()}k</span>
+          <span style={updated}>
+            <ReactTimeAgo date={Date.parse(props.info.updated)} />
+          </span>
+        </div>
+      </div>
+      <FeatherIcon
+        style={active ? activestyle : inactive}
+        size="14px"
+        stroke="#fff"
+        strokeWidth="2px"
+        icon="trash"
+      />
+    </Segment>
+  )
 }
 
-export default SelectedItem;
+export default SelectedItem

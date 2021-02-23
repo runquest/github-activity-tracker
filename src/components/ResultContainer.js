@@ -1,10 +1,9 @@
 import _ from 'lodash'
-import React from 'react';
+import React, { useState } from 'react'
 
-import { Segment, List } from 'semantic-ui-react';
-import FeatherIcon from 'feather-icons-react';
+import { Segment, List } from 'semantic-ui-react'
+import FeatherIcon from 'feather-icons-react'
 import SelectedItem from './SelectedItem'
-
 
 const container = {
   width: '473px',
@@ -23,7 +22,7 @@ const container = {
 const resultContainer = {
   background: 'inherit',
   boxSizing: 'border-box',
-  padding: '0'
+  padding: '0',
 }
 
 const text = {
@@ -35,16 +34,24 @@ const text = {
   color: '#bcbcf2',
 }
 
-
-
 const ResultContainer = (data) => {
-    return (
-    <List className='list' style={resultContainer}>
+  const [chosen, setChosen] = useState(null)
+  const [items, setItems] = useState(data.display)
+  console.log('DATA', data)
+  return (
+    <List className="list" style={resultContainer}>
       {data.display.map((item) => (
-        <SelectedItem key={Math.random()*1000} info={item} />
+        <SelectedItem
+          active={item === chosen}
+          onHover={() => setChosen(item)}
+          onClick={data.onClick(item)}
+          onLeaveHover={() => setChosen(null)}
+          key={Math.random() * 1000}
+          info={item}
+        />
       ))}
-     </List>
-  );
+    </List>
+  )
 }
 
-export default ResultContainer;
+export default ResultContainer

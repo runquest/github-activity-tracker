@@ -16,19 +16,19 @@ html {
   border-radius: 4px;
 }
 
-input[type="text"].prompt::placeholder {
-  color: #8383AF;
+input[type='text'].prompt::placeholder {
+  color: #8383af;
   font-size: 16px;
   line-height: 18.75px;
 }
 
-.ui.search>.results {
+.ui.search > .results {
   margin-top: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.ui.search>.results .result > .container {
+.ui.search > .results .result > .container {
   width: 399px;
   height: 44px;
 
@@ -40,8 +40,7 @@ input[type="text"].prompt::placeholder {
   display: flex;
   align-items: center;
 
-  color: #8383AF;
-
+  color: #8383af;
 
   /* Inside Auto Layout */
 
@@ -51,8 +50,8 @@ input[type="text"].prompt::placeholder {
   margin: 0px 0px;
 }
 
-.ui.search>.results .result:hover {
-  background: #ECECF7;
+.ui.search > .results .result:hover {
+  background: #ececf7;
 }
 
 .list:hover {
@@ -62,4 +61,8 @@ input[type="text"].prompt::placeholder {
 
 .listItem:hover {
   opacity: 0.5;
+}
+
+.inactive {
+  opacity: 0.3;
 }
