@@ -37,7 +37,7 @@ const text = {
 const ResultContainer = (data) => {
   const [chosen, setChosen] = useState(null)
   const [items, setItems] = useState(data.display)
-  console.log('DATA', data)
+
   return (
     <List className="list" style={resultContainer}>
       {data.display.map((item) => (

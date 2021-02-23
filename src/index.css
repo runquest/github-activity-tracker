@@ -54,15 +54,10 @@ input[type='text'].prompt::placeholder {
   background: #ececf7;
 }
 
-.list:hover {
-  background: green;
-  cursor: pointer;
-}
-
-.listItem:hover {
-  opacity: 0.5;
-}
-
 .inactive {
   opacity: 0.3;
+}
+
+.listItem {
+  opacity: 1;
 }

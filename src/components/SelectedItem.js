@@ -27,7 +27,6 @@ const title = {
   top: '16px',
   borderRadius: 'nullpx',
 
-  // fontFamily: Roboto;
   fontSize: '18px',
   fontStyle: 'normal',
   fontWeight: '400',
@@ -41,20 +40,6 @@ const title = {
   /* Required for text-overflow to do anything */
   whiteSpace: 'nowrap',
   overflow: 'hidden',
-
-  // // font-family: Roboto;
-  // font-size: 18px;
-  // font-style: normal;
-  // font-weight: 700;
-  // line-height: 21px;
-  // letter-spacing: 0em;
-  // text-align: left;
-
-  // font-family: Apercu;
-  // font-size: 18px;
-  // line-height: 21px;
-  // letter-spacing: 0em;
-  // text-align: left;
 }
 
 const starred = {
@@ -96,28 +81,24 @@ const repo = {
   textAlign: 'left',
 }
 
-const handleFocus = (event) => {
-  // console.log("HANDLE FOCUS")
-}
-
 const SelectedItem = (props) => {
-  const [active, setActive] = useState(false)
-  // const [result, setResult] = useState([])
+  const [active, setActive] = useState(active)
+
   const customBoxShadow = {
     boxShadow: `inset 8px 0px 0px #${props.info.color}`,
   }
 
-  const activestyle = {
+  const show = {
     display: 'block',
   }
 
-  const inactive = {
+  const hide = {
     display: 'none',
   }
   console.log('props', props)
   return (
     <Segment
-      className={active ? 'listItem' : 'listItem inactive'}
+      className={active ? 'listItem' : 'inactive'}
       style={{ ...container, ...customBoxShadow }}
       onMouseEnter={() => {
         setActive(true)
@@ -147,7 +128,7 @@ const SelectedItem = (props) => {
         </div>
       </div>
       <FeatherIcon
-        style={active ? activestyle : inactive}
+        style={active ? show : hide}
         size="14px"
         stroke="#fff"
         strokeWidth="2px"
