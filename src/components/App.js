@@ -1,22 +1,16 @@
-import React from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Home from './Home';
-import NoMatch from './NoMatch';
-
-// import 'semantic-ui-css/semantic.min.css'
+import React, { useState } from 'react'
+import Graph from './Graph'
+import Sidebar from './Sidebar'
 
 const App = () => {
-  return (
-    <Router>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+  const [items, setItems] = useState()
 
-export default App;
+  return (
+    <div className="App">
+      <Graph />
+      <Sidebar />
+    </div>
+  )
+}
+
+export default App

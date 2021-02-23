@@ -634,7 +634,7 @@ function exampleReducer(state, action) {
   }
 }
 
-const SearchBox = (props) => {
+const SearchInput = (props) => {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value, placeholder } = state
 
@@ -725,4 +725,4 @@ const SearchBox = (props) => {
   )
 }
 
-export default SearchBox;
+export default SearchInput;

@@ -1,37 +1,22 @@
 import React, { useState } from 'react'
-import { Segment, Container } from 'semantic-ui-react'
-import SearchBox from './SearchBox'
+import SearchInput from './SearchInput'
 import ResultContainer from './ResultContainer'
-import FetchData from './FetchData'
 
-const source = {}
-const container = {
-  width: '538px',
-  height: '900px',
-  background: '#37374A',
-  marginTop: '0px',
-}
-
-const SideBar = () => {
-  const [visible, setVisibility] = useState(true)
+const Sidebar = () => {
   const [result, setResult] = useState([])
 
   return (
-    <Segment style={container}>
-      <SearchBox
+    <div className="Sidebar">
+      <SearchInput
         onSearch={(value) => setVisibility(value)}
         onSelect={(value) => {
           setResult((result) => [...result, value])
         }}
       />
 
-      <ResultContainer
-        visibility={true}
-        display={result}
-        onClick={(item) => console.log('SB onclick', item)}
-      />
-    </Segment>
+      <ResultContainer items={result} />
+    </div>
   )
 }
 
-export default SideBar
+export default Sidebar

@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { useState } from 'react'
 
 import { Segment, List } from 'semantic-ui-react'
-import FeatherIcon from 'feather-icons-react'
+import { Search } from 'react-feather'
 import SelectedItem from './SelectedItem'
 
 const container = {
@@ -36,11 +36,26 @@ const text = {
 
 const ResultContainer = (data) => {
   const [chosen, setChosen] = useState(null)
-  const [items, setItems] = useState(data.display)
+  const [items, setItems] = useState(data.items)
+
+  if (!items || items.length < 1 || data.is) {
+    return (
+      <div className="EmptyStateContainer">
+        <div className="EmptyStateMessage">
+          <Search
+            color={'#BCBCF2'}
+            size={32}
+            style={{ marginBottom: '16px' }}
+          />
+          <div>Search for a GitHub repository to populate graph</div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <List className="list" style={resultContainer}>
-      {data.display.map((item) => (
+      {data.items.map((item) => (
         <SelectedItem
           active={item === chosen}
           onHover={() => setChosen(item)}
