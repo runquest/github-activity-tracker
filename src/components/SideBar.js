@@ -4,7 +4,12 @@ import Results from './Results'
 
 const Sidebar = ({ onUpdate }) => {
   const [result, setResult] = useState([])
-  console.log('on', onUpdate)
+
+  // const handleSelect = (event, value) => {
+  //   setResult((result) => [...result, value])
+  //   console.log('RESULT', result)
+  // }
+
   return (
     <div className="Sidebar">
       <SearchInput
@@ -12,6 +17,7 @@ const Sidebar = ({ onUpdate }) => {
           setResult(() => [...result, value])
           onUpdate('HELLO WORlD')
         }}
+        // onSelect={handleSelect}
       />
 
       <Results items={result} />
