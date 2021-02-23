@@ -194,3 +194,11 @@ input[type='text'].prompt::placeholder {
   font-family: 'Apercu  Roboto';
   padding-left: 4px;
 }
+
+.Graph {
+  margin: 80px;
+  box-sizing: border-box;
+  width: 854px;
+  height: 786px;
+  background: #fff;
+}

@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import SearchInput from './SearchInput'
 import Results from './Results'
 
-const Sidebar = () => {
+const Sidebar = ({ onUpdate }) => {
   const [result, setResult] = useState([])
 
   return (
     <div className="Sidebar">
       <SearchInput
         onSelect={(value) => {
-          console.log('Sidebar onSelect')
-          setResult((result) => [...result, value])
+          setResult(() => [...result, value])
         }}
       />
 
