@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <Graph data={items} />
-      <Sidebar onUpdate={(result) => console.log('REsULT', result)} />
+      <Sidebar onUpdate={(value) => console.log('REsULT', value)} />
     </div>
   )
 }

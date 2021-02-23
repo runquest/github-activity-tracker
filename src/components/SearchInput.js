@@ -29,30 +29,30 @@ const SearchInput = ({ onSelect }) => {
       }
 
       const re = new RegExp(_.escapeRegExp(input.value), 'i')
-      searchForRepo(re).then((response) => {
-        const list = response.items.map((item) => ({
-          childKey: item.id,
-          id: item.id,
-          title: item.full_name,
-          name: item.name,
-          owner: item.owner.login,
-          updated: item.updated_at,
-          stars: item.stargazers_count,
-          color: Math.floor(Math.random() * 16777215).toString(16),
-        }))
-        // const list = items.map((item) => ({
-        //   childKey: item.id,
-        //   id: item.id,
-        //   title: item.full_name,
-        //   name: item.name,
-        //   owner: item.owner.login,
-        //   updated: item.updated_at,
-        //   stars: item.stargazers_count,
-        //   color: Math.floor(Math.random() * 16777215).toString(16),
-        // }))
-        setLoading(false)
-        setResults(list.slice(0, 3))
-      })
+      // searchForRepo(re).then((response) => { --> promise
+      // const list = response.items.map((item) => ({
+      //   childKey: item.id,
+      //   id: item.id,
+      //   title: item.full_name,
+      //   name: item.name,
+      //   owner: item.owner.login,
+      //   updated: item.updated_at,
+      //   stars: item.stargazers_count,
+      //   color: Math.floor(Math.random() * 16777215).toString(16),
+      // }))
+      const list = items.map((item) => ({
+        childKey: item.id,
+        id: item.id,
+        title: item.full_name,
+        name: item.name,
+        owner: item.owner.login,
+        updated: item.updated_at,
+        stars: item.stargazers_count,
+        color: Math.floor(Math.random() * 16777215).toString(16),
+      }))
+      setLoading(false)
+      setResults(list.slice(0, 3))
+      // }) --> promise end
     }, 300)
   }, [])
 

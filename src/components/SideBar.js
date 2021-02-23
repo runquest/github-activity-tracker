@@ -4,12 +4,13 @@ import Results from './Results'
 
 const Sidebar = ({ onUpdate }) => {
   const [result, setResult] = useState([])
-
+  console.log('on', onUpdate)
   return (
     <div className="Sidebar">
       <SearchInput
         onSelect={(value) => {
           setResult(() => [...result, value])
+          onUpdate('HELLO WORlD')
         }}
       />
 
