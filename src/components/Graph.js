@@ -21,9 +21,21 @@ import {
 } from 'recharts'
 
 const Graph = ({ items }) => {
-  console.log('graph - data', items)
+  // console.log('graph - data', items)
   return (
     <div className="Graph">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart width={854} height={786} data={data}>
+          <XAxis datakey={data.week} tickCount={100} />
+          <YAxis datakey={data.total} />
+          <Line
+            type="monotone"
+            dataKey="total"
+            stroke="#8884d8"
+            strokeWidth={2}
+          />
+        </LineChart>
+      </ResponsiveContainer>
       {/* <LineChart width={854} height={786} data={data}>
         <Line type="monotone" dataKey="total" stroke="#ff7300" yAxisId={0} />
       </LineChart> */}
