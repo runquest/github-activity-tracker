@@ -1,23 +1,23 @@
 import _ from 'lodash'
 import React, { useState } from 'react'
 
-import { Segment, List } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 import { Search } from 'react-feather'
 import SelectedItem from './SelectedItem'
 
-const container = {
-  width: '473px',
-  height: 'auto',
-  height: '208px',
-  cornerRadius: '16px',
-  background: '#242432',
-  padding: '16px 32px',
-  color: 'lig  htgrey',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-}
+// const container = {
+//   width: '473px',
+//   height: 'auto',
+//   height: '208px',
+//   cornerRadius: '16px',
+//   background: '#242432',
+//   padding: '16px 32px',
+//   color: 'lig  htgrey',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+// }
 
 const resultContainer = {
   background: 'inherit',
@@ -34,11 +34,10 @@ const text = {
   color: '#bcbcf2',
 }
 
-const ResultContainer = (data) => {
+const ResultContainer = ({ items }) => {
   const [chosen, setChosen] = useState(null)
-  const [items, setItems] = useState(data.items)
 
-  if (!items || items.length < 1 || data.is) {
+  if (!items || items.length < 1) {
     return (
       <div className="EmptyStateContainer">
         <div className="EmptyStateMessage">
@@ -53,16 +52,18 @@ const ResultContainer = (data) => {
     )
   }
 
+  items.map((item) => console.log('RC', item))
+
   return (
     <List className="list" style={resultContainer}>
-      {data.items.map((item) => (
+      {items.map((item) => (
         <SelectedItem
           active={item === chosen}
           onHover={() => setChosen(item)}
-          onClick={data.onClick(item)}
+          // onClick={data.onClick(item)}
           onLeaveHover={() => setChosen(null)}
           key={Math.random() * 1000}
-          info={item}
+          info={item.result}
         />
       ))}
     </List>

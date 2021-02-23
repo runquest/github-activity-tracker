@@ -8,8 +8,8 @@ const Sidebar = () => {
   return (
     <div className="Sidebar">
       <SearchInput
-        onSearch={(value) => setVisibility(value)}
         onSelect={(value) => {
+          console.log('Sidebar onSelect')
           setResult((result) => [...result, value])
         }}
       />

@@ -81,11 +81,11 @@ const repo = {
   textAlign: 'left',
 }
 
-const SelectedItem = (props) => {
-  const [active, setActive] = useState(active)
+const SelectedItem = ({ info, onHover, onClick }) => {
+  const [active, setActive] = useState(info.active)
 
   const customBoxShadow = {
-    boxShadow: `inset 8px 0px 0px #${props.info.color}`,
+    boxShadow: `inset 8px 0px 0px #${info.color}`,
   }
 
   const show = {
@@ -95,24 +95,24 @@ const SelectedItem = (props) => {
   const hide = {
     display: 'none',
   }
-  console.log('props', props)
+
   return (
     <Segment
       className={active ? 'listItem' : 'inactive'}
       style={{ ...container, ...customBoxShadow }}
       onMouseEnter={() => {
         setActive(true)
-        props.onHover
+        onHover
       }}
       onMouseLeave={() => {
         setActive(false)
       }}
-      onClick={props.onClick}
+      onClick={onClick}
     >
       <div>
         <div style={{ ...title }}>
-          <span style={owner}>{props.info.owner}</span> /
-          <span style={repo}>{props.info.name}</span>
+          <span style={owner}>{info.owner}</span> /
+          <span style={repo}>{info.name}</span>
         </div>
         <div>
           <FeatherIcon
@@ -121,9 +121,9 @@ const SelectedItem = (props) => {
             strokeWidth="1px"
             icon="star"
           />
-          <span style={starred}>{props.info.stars.toLocaleString()}k</span>
+          <span style={starred}>{info.stars.toLocaleString()}k</span>
           <span style={updated}>
-            <ReactTimeAgo date={Date.parse(props.info.updated)} />
+            <ReactTimeAgo date={Date.parse(info.updated)} />
           </span>
         </div>
       </div>
