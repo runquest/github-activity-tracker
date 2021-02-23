@@ -23,6 +23,7 @@
     "react-fetch-hook": "^1.8.5",
     "react-router-dom": "^5.2.0",
     "react-time-ago": "^6.2.2",
+    "recharts": "^2.0.7",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3"
   },
