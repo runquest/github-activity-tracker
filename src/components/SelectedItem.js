@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
-import ReactTimeAgo from 'react-time-ago'
 import { Trash, Star } from 'react-feather'
 
 const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
@@ -36,10 +34,8 @@ const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
           <span>
             <Star size={14} color={'#bcbcf2'} />
           </span>
-          <span className={'Starred'}>{info.stars.toLocaleString()}k</span>
-          <span className={'Updated'}>
-            <ReactTimeAgo date={Date.parse(info.updated)} />
-          </span>
+          <span className={'Starred'}>{info.stars}</span>
+          <span className={'Updated'}>{Date.parse(info.updated)}</span>
         </div>
       </div>
       <div style={{ display: hover ? 'block' : 'none' }}>
