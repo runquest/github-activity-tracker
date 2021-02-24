@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Trash, Star } from 'react-feather'
+import Moment from 'react-moment'
 
 const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
   const [hover, setHover] = useState(false)
@@ -35,7 +36,12 @@ const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
             <Star size={14} color={'#bcbcf2'} />
           </span>
           <span className={'Starred'}>{info.stars}</span>
-          <span className={'Updated'}>{Date.parse(info.updated)}</span>
+          <span className={'Updated'}>
+            Updated
+            <span style={{ paddingLeft: '4px' }}>
+              <Moment fromNow>{info.updated}</Moment>
+            </span>
+          </span>
         </div>
       </div>
       <div style={{ display: hover ? 'block' : 'none' }}>
