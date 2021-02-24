@@ -14,14 +14,17 @@ const Results = () => {
 
   return (
     <List className="ResultsList">
-      {fruit.map((item) => (
+      {fruit.map((item, index) => (
         <SelectedItem
           active={item === chosen || !chosen}
-          onHover={() => setChosen(item)}
-          // onClick={data.onClick(item)}
-          onLeaveHover={() => setChosen(null)}
+          onEnter={() => setChosen(item)}
+          onLeave={() => setChosen(null)}
           key={Math.random() * 1000}
           info={item}
+          onClick={() => {
+            fruit.splice(index, 1)
+            setFruits(fruit)
+          }}
         />
       ))}
     </List>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Trash, Star } from 'react-feather'
 import Moment from 'react-moment'
 
-const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
+const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
   const [hover, setHover] = useState(false)
   const customBoxShadow = {
     boxShadow: `inset 8px 0px 0px #${info.color}`,
@@ -10,12 +10,12 @@ const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
 
   const handleMouseEnter = () => {
     setHover(true)
-    onHover()
+    onEnter()
   }
 
   const handleMouseLeave = () => {
     setHover(false)
-    onLeaveHover()
+    onLeave()
   }
 
   return (
@@ -44,7 +44,7 @@ const SelectedItem = ({ active, info, onHover, onLeaveHover, onClick }) => {
           </span>
         </div>
       </div>
-      <div style={{ display: hover ? 'block' : 'none' }}>
+      <div style={{ display: active ? 'block' : 'none' }}>
         <Trash size={14} color={'#fff'} />
       </div>
     </div>
