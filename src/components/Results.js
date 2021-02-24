@@ -1,20 +1,16 @@
-import _ from 'lodash'
 import React, { useState, useContext } from 'react'
 import { Context } from './Context'
 import { List } from 'semantic-ui-react'
-import { Search } from 'react-feather'
 import SelectedItem from './SelectedItem'
 import EmptyResultContainer from './EmptyResultContainer'
 
 const Results = () => {
-  const [chosen, setChosen] = useState(null)
   const [result, setResult] = useContext(Context)
+  const [chosen, setChosen] = useState(null)
 
   if (!result || result.length < 1) {
     return <EmptyResultContainer />
   }
-
-  console.log('RESULT', result)
 
   return (
     <List className="ResultsList">
