@@ -4,11 +4,10 @@ import Graph from './Graph'
 import Sidebar from './Sidebar'
 
 const App = () => {
-  const [items, setItems] = useState()
-  const [result, setResult] = useState([])
+  const [fruit, setFruits] = useState([])
 
   return (
-    <Context.Provider value={[result, setResult]}>
+    <Context.Provider value={[fruit, setFruits]}>
       <div className="App">
         <Graph />
         <Sidebar />

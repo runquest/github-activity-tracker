@@ -1,9 +1,11 @@
 import _ from 'lodash'
 import React, { useState, useEffect, useContext } from 'react'
-import { searchForRepo } from '../data/api'
+import { searchForRepo, getRepoCommitActivity } from '../data/api'
 import { Search } from 'semantic-ui-react'
+import { Context } from './Context'
 
-const SearchInput = ({ onSelect }) => {
+const SearchInput = () => {
+  const [fruit, setFruit] = useContext(Context)
   const [active, setActive] = useState(false)
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState({})
@@ -18,28 +20,14 @@ const SearchInput = ({ onSelect }) => {
     return <div className={'SuggestedItem'}>{title}</div>
   }
 
-  const modified = (item) => {
-    return {
-      childKey: item.id, // can I extract it into separate object?
-      id: item.id,
-      title: item.full_name,
-      name: item.name,
-      owner: item.owner.login,
-      updated: item.updated_at,
-      stars: item.stargazers_count,
-      color: Math.floor(Math.random() * 16777215).toString(16),
-    }
-  }
-
   useEffect(() => {
     clearTimeout(timeoutRef.current)
     timeoutRef.current = setTimeout(() => {
       if (value.length < 3) return
       const re = new RegExp(_.escapeRegExp(value), 'i') //why do I need this regex here?
-      searchForRepo(re).then(({ items }) => {
-        const list = items.map((item) => modified(item)).slice(0, 3)
+      searchForRepo(re).then((items) => {
         setLoading(false)
-        setResults(list)
+        setResults(items)
       })
     }, 300)
   }, [value])
@@ -56,9 +44,16 @@ const SearchInput = ({ onSelect }) => {
   }
 
   const handleResultSelection = (event, { result }) => {
-    onSelect(result)
-    setPlaceholder('Search a GitHub Repository...')
-    setValue('')
+    // console.log('item', item)
+    getRepoCommitActivity(result).then((commits) => {
+      // console.log('COMMITS', commits)
+      result.commits = commits
+      setFruit(() => [...fruit, result])
+      // setResult(() => [...item.result, result])
+      // onSelect(result)
+    })
+    // setPlaceholder('Search a GitHub Repository...')
+    // setValue('')
   }
 
   return (

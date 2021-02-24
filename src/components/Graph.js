@@ -1,5 +1,4 @@
-import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import React, { useState, useContext, useEffect } from 'react'
 import {
   ResponsiveContainer,
   LineChart,
@@ -19,29 +18,50 @@ import {
   Label,
   LabelList,
 } from 'recharts'
+import { Context } from './Context'
 
-const Graph = ({ items }) => {
-  // console.log('graph - data', items)
+const Graph = () => {
+  const [fruit, setFruits] = useContext(Context)
+  if (!fruit) return <div className="Graph"></div>
+
   return (
     <div className="Graph">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart width={854} height={786} data={data}>
-          <XAxis datakey={data.week} tickCount={100} />
-          <YAxis datakey={data.total} />
-          <Line
-            type="monotone"
-            dataKey="total"
-            stroke="#8884d8"
-            strokeWidth={2}
-          />
+        <LineChart width={500} height={300} data={data}>
+          <XAxis dataKey="week" />
+          <YAxis />
+          <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+          {fruit.map((item) => (
+            <Line
+              dataKey="total"
+              data={item.commits}
+              name={item.color}
+              stroke={`#${item.color}`}
+              key={Math.random()}
+            />
+          ))}
         </LineChart>
       </ResponsiveContainer>
-      {/* <LineChart width={854} height={786} data={data}>
-        <Line type="monotone" dataKey="total" stroke="#ff7300" yAxisId={0} />
-      </LineChart> */}
     </div>
   )
 }
+
+// const data = [
+//       {name: 'Page A', uv: 4000, amt: 2400},
+//       {name: 'Page B', uv: 3000, amt: 2210},
+//       {name: 'Page C', uv: 2000, amt: 2290},
+//       {name: 'Page D', uv: 2780, amt: 2000},
+//       {name: 'Page E', uv: 1890, amt: 2181},
+// ];
+// const data2 = [
+//       {name: 'Page A', pv: 2400, amt: 2400},
+//       {name: 'Page B', pv: 1398, amt: 2210},
+//       {name: 'Page C', pv: 9800, amt: 2290},
+//       {name: 'Page D', pv: 3908, amt: 2000},
+// ];
+
+//  <Line data={data} type="monotone" dataKey="uv" stroke="#8884d8"/>
+//  <Line data = {data2}type="monotone" dataKey="pv" stroke="#82ca9d"/>
 
 // const obj = {
 //   repo;

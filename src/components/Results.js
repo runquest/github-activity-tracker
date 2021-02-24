@@ -5,16 +5,16 @@ import SelectedItem from './SelectedItem'
 import EmptyResultContainer from './EmptyResultContainer'
 
 const Results = () => {
-  const [result, setResult] = useContext(Context)
+  const [fruit, setFruits] = useContext(Context)
   const [chosen, setChosen] = useState(null)
 
-  if (!result || result.length < 1) {
+  if (!fruit || fruit.length < 1) {
     return <EmptyResultContainer />
   }
 
   return (
     <List className="ResultsList">
-      {result.map((item) => (
+      {fruit.map((item) => (
         <SelectedItem
           active={item === chosen || !chosen}
           onHover={() => setChosen(item)}
