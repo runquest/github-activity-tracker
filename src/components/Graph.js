@@ -18,20 +18,25 @@ import {
   Label,
   LabelList,
 } from 'recharts'
+import Moment from 'react-moment'
 import { Context } from './Context'
+import { GitCommit } from 'react-feather'
 
-const CustomTooltip = ({ payload }) => {
-  // console.log('label', payload.payload)
-
-  // if (payload && payload.payload) {
-  //   console.log('PAYLOAD', payload)
-  //   return (
-  //     <div className="CustomTooltip">
-  //       <p className="Week">`${payload.payload.week}`</p>
-  //       <p className="Commits">{payload.payload.total}</p>
-  //     </div>
-  //   )
-  // }
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    let week = new Date(payload[0].payload.week * 1000)
+    return (
+      <div className="CustomTooltip">
+        <div className="Week">Week of {week.toDateString()}</div>
+        <div className="Total">
+          <GitCommit size={17} />
+          <span style={{ padding: '0 4px  ' }}>
+            {payload[0].payload.total} commits
+          </span>
+        </div>
+      </div>
+    )
+  }
 
   return null
 }
@@ -41,9 +46,9 @@ const Graph = () => {
   if (!fruit) return <div className="Graph"></div>
   return (
     <div className="Graph">
-      <LineChart width={700} height={393} data={fruit}>
-        <XAxis dataKey="" interval={52} />
-        {/* <YAxis label="" /> */}
+      <LineChart className="LineChart" width={700} height={393} data={fruit}>
+        {/* <XAxis tickLine={true} dataKey="" interval={'preserveStart'} /> */}
+        {/* <YAxis tickLine={false} /> */}
         <Tooltip content={<CustomTooltip />} />
         {fruit.map((item) => (
           <Line

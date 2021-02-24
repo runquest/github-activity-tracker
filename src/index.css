@@ -214,20 +214,27 @@ input[type='text'].prompt::placeholder {
   background: #fff;
 }
 
+.LineChart {
+  border-bottom: 5px solid black;
+  border-left: 5px solid black;
+}
+
 .CustomTooltip {
   height: 54px;
   width: 177px;
-  left: 373px;
-  top: 354px;
   border-radius: 4px;
   padding: 8px, 16px, 8px, 16px;
   border: 1px solid grey;
   border-radius: 4px;
   padding: 4px;
   box-shadow: 0px 3px 12px 0px #000000 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.CustomTooltip.Week {
+.CustomTooltip .Week {
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
@@ -238,15 +245,25 @@ input[type='text'].prompt::placeholder {
   color: #6d6d90;
 }
 
-.CustomTooltip.Commits {
+.CustomTooltip .Total {
   height: 17px;
-  width: 77px;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
   letter-spacing: 0em;
-  text-align: left;
+  vertical-align: middle;
   color: #37374a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.CommitInput {
+}
+
+.CommitLabel {
 }
