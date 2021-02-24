@@ -141,6 +141,10 @@ input[type='text'].prompt::placeholder {
   align-items: center;
 }
 
+.SelectedItem[wobble='1'] {
+  animation: wobble 1s 1;
+}
+
 .SelectedItem:hover {
   cursor: pointer;
 }
@@ -266,4 +270,19 @@ input[type='text'].prompt::placeholder {
 }
 
 .CommitLabel {
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

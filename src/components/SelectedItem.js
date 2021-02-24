@@ -3,19 +3,26 @@ import { Trash, Star } from 'react-feather'
 import Moment from 'react-moment'
 
 const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
-  const [hover, setHover] = useState(false)
+  const [hover, setHover] = useState(0)
+  const [wobble, setWobble] = useState(0)
+
   const customBoxShadow = {
     boxShadow: `inset 8px 0px 0px #${info.color}`,
   }
 
   const handleMouseEnter = () => {
-    setHover(true)
+    setHover(1)
     onEnter()
   }
 
   const handleMouseLeave = () => {
-    setHover(false)
+    setHover(0)
     onLeave()
+  }
+
+  const handleOnClick = () => {
+    setWobble(1)
+    onClick()
   }
 
   return (
@@ -24,7 +31,9 @@ const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
       style={{ ...customBoxShadow }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={onClick}
+      onAnimationEnd={() => setWobble(0)}
+      wobble={wobble}
+      onClick={handleOnClick}
     >
       <div className={'SelectedItemMetadata'}>
         <div className={'SelectedItemTopRow'}>
@@ -44,7 +53,7 @@ const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
           </span>
         </div>
       </div>
-      <div style={{ display: active ? 'block' : 'none' }}>
+      <div style={{ display: hover === 0 ? 'block' : 'none' }}>
         <Trash size={14} color={'#fff'} />
       </div>
     </div>

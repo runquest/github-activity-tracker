@@ -24,6 +24,7 @@ const Results = () => {
           onClick={() => {
             fruit.splice(index, 1)
             setFruits(fruit)
+            console.log('DONE')
           }}
         />
       ))}
