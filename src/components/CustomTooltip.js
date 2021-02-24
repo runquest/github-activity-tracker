@@ -1,4 +1,5 @@
 import React from 'react'
+import { GitCommit } from 'react-feather'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {

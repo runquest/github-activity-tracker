@@ -20,7 +20,6 @@ import {
 } from 'recharts'
 import Moment from 'react-moment'
 import { Context } from './Context'
-import { GitCommit } from 'react-feather'
 import CustomTooltip from './CustomTooltip'
 
 const Graph = () => {
