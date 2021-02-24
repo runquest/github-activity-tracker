@@ -1,5 +1,7 @@
 import React from 'react'
 import { Search } from 'react-feather'
+import '../../index.css'
+import './EmptyResultContainer.css'
 
 const EmptyResultContainer = () => {
   return (

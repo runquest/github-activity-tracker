@@ -1,8 +1,10 @@
 import _ from 'lodash'
 import React, { useState, useEffect, useContext } from 'react'
-import { searchForRepo, getRepoCommitActivity } from '../data/api'
+import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
-import { Context } from './Context'
+import { Context } from '../Context'
+import '../../index.css'
+import './SearchInput.css'
 
 const SearchInput = () => {
   const [fruit, setFruit] = useContext(Context)

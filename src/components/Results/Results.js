@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react'
-import { Context } from './Context'
+import { Context } from '../Context'
 import { List } from 'semantic-ui-react'
-import SelectedItem from './SelectedItem'
-import EmptyResultContainer from './EmptyResultContainer'
+import SelectedItem from '../SelectedItem'
+import EmptyResultContainer from '../EmptyResultContainer'
+
+import '../../index.css'
+import './Results.css'
 
 const Results = () => {
   const [fruit, setFruits] = useContext(Context)

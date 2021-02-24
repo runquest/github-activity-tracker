@@ -1,26 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
-import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  ReferenceLine,
-  ReferenceArea,
-  ReferenceDot,
-  Tooltip,
-  CartesianGrid,
-  Legend,
-  Brush,
-  ErrorBar,
-  AreaChart,
-  Area,
-  Label,
-  LabelList,
-} from 'recharts'
+import { LineChart, Line, Tooltip } from 'recharts'
 import Moment from 'react-moment'
-import { Context } from './Context'
-import CustomTooltip from './CustomTooltip'
+import { Context } from '../Context'
+import CustomTooltip from '../CustomTooltip'
+
+import '../../index.css'
+import './Graph.css'
 
 const Graph = () => {
   const [fruit, setFruits] = useContext(Context)

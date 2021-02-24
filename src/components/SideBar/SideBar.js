@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-import SearchInput from './SearchInput'
-import Results from './Results'
+import SearchInput from '../SearchInput'
+import Results from '../Results'
+import '../../index.css'
+import './Sidebar.css'
 
 const Sidebar = () => {
   return (
