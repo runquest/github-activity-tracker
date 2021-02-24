@@ -1,6 +1,5 @@
 import _ from 'lodash'
-import React, { useState } from 'react'
-import Suggestion from './Suggestion'
+import React, { useState, useEffect } from 'react'
 import { searchForRepo } from '../data/api'
 import { Search } from 'semantic-ui-react'
 
@@ -15,45 +14,40 @@ const SearchInput = ({ onSelect }) => {
 
   const timeoutRef = React.useRef()
 
-  const renderSearchResult = (props) => {
-    return <Suggestion data={props} />
+  const renderSearchResult = ({ title }) => {
+    return <div className={'SuggestedItem'}>{title}</div>
   }
+
+  const modified = (item) => {
+    return {
+      childKey: item.id, // can I extract it into separate object?
+      id: item.id,
+      title: item.full_name,
+      name: item.name,
+      owner: item.owner.login,
+      updated: item.updated_at,
+      stars: item.stargazers_count,
+      color: Math.floor(Math.random() * 16777215).toString(16),
+    }
+  }
+
+  useEffect(() => {
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => {
+      if (value.length < 3) return
+      const re = new RegExp(_.escapeRegExp(value), 'i') //why do I need this regex here?
+      searchForRepo(re).then(({ items }) => {
+        const list = items.map((item) => modified(item)).slice(0, 3)
+        setLoading(false)
+        setResults(list)
+      })
+    }, 300)
+  }, [value])
 
   const handleSearchChange = React.useCallback((e, input) => {
     clearTimeout(timeoutRef.current)
     setLoading(true)
     setValue(input.value)
-    timeoutRef.current = setTimeout(() => {
-      if (input.value.length < 3) {
-        return
-      }
-
-      const re = new RegExp(_.escapeRegExp(input.value), 'i')
-      // searchForRepo(re).then((response) => { --> promise
-      // const list = response.items.map((item) => ({
-      //   childKey: item.id,
-      //   id: item.id,
-      //   title: item.full_name,
-      //   name: item.name,
-      //   owner: item.owner.login,
-      //   updated: item.updated_at,
-      //   stars: item.stargazers_count,
-      //   color: Math.floor(Math.random() * 16777215).toString(16),
-      // }))
-      const list = items.map((item) => ({
-        childKey: item.id,
-        id: item.id,
-        title: item.full_name,
-        name: item.name,
-        owner: item.owner.login,
-        updated: item.updated_at,
-        stars: item.stargazers_count,
-        color: Math.floor(Math.random() * 16777215).toString(16),
-      }))
-      setLoading(false)
-      setResults(list.slice(0, 3))
-      // }) --> promise end
-    }, 300)
   }, [])
 
   const handleOnBlur = () => {
@@ -66,12 +60,6 @@ const SearchInput = ({ onSelect }) => {
     setPlaceholder('Search a GitHub Repository...')
     setValue('')
   }
-
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(timeoutRef.current)
-    }
-  }, [])
 
   return (
     <Search
@@ -862,5 +850,16 @@ const items = [
     score: 1.0,
   },
 ]
+
+// const list = items.map((item) => ({
+//   childKey: item.id,
+//   id: item.id,
+//   title: item.full_name,
+//   name: item.name,
+//   owner: item.owner.login,
+//   updated: item.updated_at,
+//   stars: item.stargazers_count,
+//   color: Math.floor(Math.random() * 16777215).toString(16),
+// }))
 
 export default SearchInput

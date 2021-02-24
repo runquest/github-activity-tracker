@@ -1,27 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SearchInput from './SearchInput'
 import Results from './Results'
 
 const Sidebar = ({ onUpdate }) => {
   const [result, setResult] = useState([])
 
-  // const handleSelect = (event, value) => {
-  //   setResult((result) => [...result, value])
-  //   console.log('RESULT', result)
-  // }
-
-  // const handleSelect = (value) => setResult((result) => [...result, value])
-
-  // const addMessage = (newMessage) => setMessages(state => [...state, newMessage])
+  useEffect(()=> {onUpdate(result)}, [result])
 
   return (
     <div className="Sidebar">
       <SearchInput
         onSelect={(value) => {
           setResult(() => [...result, value])
-          onUpdate('HELLO WORlD')
         }}
-        // onSelect={handleSelect}
       />
 
       <Results items={result} />

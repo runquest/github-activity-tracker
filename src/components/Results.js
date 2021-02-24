@@ -36,7 +36,7 @@ const Results = ({ items }) => {
     <List className="ResultsList">
       {items.map((item) => (
         <SelectedItem
-          active={item === chosen}
+          active={item === chosen || !chosen}
           onHover={() => setChosen(item)}
           // onClick={data.onClick(item)}
           onLeaveHover={() => setChosen(null)}

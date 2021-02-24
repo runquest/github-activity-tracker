@@ -119,6 +119,12 @@ input[type='text'].prompt::placeholder {
   opacity: 0.3;
 }
 
+.SuggestedItem {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
 .SelectedItem {
   opacity: 1;
   height: auto;

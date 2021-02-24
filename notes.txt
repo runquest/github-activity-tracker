@@ -1,0 +1,8 @@
+1. create react app, webpack, parcell, rollup - heaveier, more opinoinated, parcell-more independance, lightwaeight app
+2. sass and less - preprocessors
+3. localization libraries
+4. empty state component
+5. component, css, index.js
+6. Suggestions does not need to be a component
+7. ReactContext
+8. react loading skeleton

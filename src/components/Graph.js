@@ -43,7 +43,15 @@ const Graph = ({ items }) => {
   )
 }
 
+// const obj = {
+//   repo;
+//   color:
+//   commits: {}
+// }
+
 const data = [
+  // {color: repo},
+  // {repos}
   {
     total: 29,
     week: 1583020800,
