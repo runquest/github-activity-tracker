@@ -21,25 +21,7 @@ import {
 import Moment from 'react-moment'
 import { Context } from './Context'
 import { GitCommit } from 'react-feather'
-
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    let week = new Date(payload[0].payload.week * 1000)
-    return (
-      <div className="CustomTooltip">
-        <div className="Week">Week of {week.toDateString()}</div>
-        <div className="Total">
-          <GitCommit size={17} />
-          <span style={{ padding: '0 4px  ' }}>
-            {payload[0].payload.total} commits
-          </span>
-        </div>
-      </div>
-    )
-  }
-
-  return null
-}
+import CustomTooltip from './CustomTooltip'
 
 const Graph = () => {
   const [fruit, setFruits] = useContext(Context)
