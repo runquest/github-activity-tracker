@@ -12,15 +12,14 @@ export const searchForRepo = async (query) => {
       },
     },
   )
+
   const data = await response.json()
-  return data
+  return data.items.map((item) => modified(item)).slice(0, 3)
 }
 
-export const getRepoCommitActivity = async (repo) => {
+export const getRepoCommitActivity = async ({ owner, name }) => {
   const response = await fetch(
-    `https://api.github.com/repos/facebook/${encodeURIComponent(
-      repo,
-    )}/stats/commit_activity`,
+    `https://api.github.com/repos/${owner}/${name}/stats/commit_activity`,
     {
       headers: {
         Accept: 'application/vnd.github.v3+json',
@@ -30,4 +29,24 @@ export const getRepoCommitActivity = async (repo) => {
 
   const data = await response.json()
   return data
+}
+
+const modified = ({
+  id,
+  full_name,
+  name,
+  owner,
+  updated_at,
+  stargazers_count,
+}) => {
+  return {
+    childKey: id,
+    id: id,
+    title: full_name,
+    name: name,
+    owner: owner.login,
+    updated: updated_at,
+    stars: stargazers_count,
+    color: Math.floor(Math.random() * 16777215).toString(16),
+  }
 }
