@@ -56,7 +56,6 @@ const SearchInput = ({ onSelect }) => {
   }
 
   const handleResultSelection = (event, { result }) => {
-    console.log('HANDLE RESULT', result)
     onSelect(result)
     setPlaceholder('Search a GitHub Repository...')
     setValue('')

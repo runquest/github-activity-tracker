@@ -5,12 +5,14 @@ import Sidebar from './Sidebar'
 
 const App = () => {
   const [items, setItems] = useState()
-  const [result, serResult] = useState([])
+  const [result, setResult] = useState([])
 
   return (
-    <Context.Provider value={[result, serResult]}>
-      <Graph />
-      <Sidebar />
+    <Context.Provider value={[result, setResult]}>
+      <div className="App">
+        <Graph />
+        <Sidebar />
+      </div>
     </Context.Provider>
   )
 }
