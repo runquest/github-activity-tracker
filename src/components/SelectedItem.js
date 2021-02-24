@@ -3,32 +3,22 @@ import React, { useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Trash, Star } from 'react-feather'
 
-const SelectedItem = ({ info, onHover, onClick }) => {
-  const [active, setActive] = useState(info.active)
-
+const SelectedItem = ({ active, info, onHover, onClick }) => {
+  const [hover, setHover] = useState(active)
   const customBoxShadow = {
     boxShadow: `inset 8px 0px 0px #${info.color}`,
   }
 
-  const show = {
-    display: 'block',
-  }
-
-  const hide = {
-    display: 'none',
-  }
-
   return (
     <div
-      className={'SelectedItem'}
-      // className={active ? 'SelectedItem' : 'SelectedItem inactive'}
+      className={active ? 'SelectedItem active' : 'SelectedItem'}
       style={{ ...customBoxShadow }}
       onMouseEnter={() => {
-        setActive(true)
+        setHover(true)
         onHover
       }}
       onMouseLeave={() => {
-        setActive(false)
+        setHover(false)
       }}
       onClick={onClick}
     >
@@ -47,7 +37,7 @@ const SelectedItem = ({ info, onHover, onClick }) => {
           </span>
         </div>
       </div>
-      <div style={active ? show : hide}>
+      <div style={{ display: active ? 'block' : 'none' }}>
         <Trash size={14} color={'#fff'} />
       </div>
     </div>

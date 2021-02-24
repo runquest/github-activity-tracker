@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
+import { Context } from './Context.js'
 import Graph from './Graph'
 import Sidebar from './Sidebar'
 
 const App = () => {
   const [items, setItems] = useState()
+  const [result, serResult] = useState([])
 
   return (
-    <div className="App">
-      <Graph data={items} />
-      <Sidebar onUpdate={(value) => console.log('APP onUpdate', value)} />
-    </div>
+    <Context.Provider value={[result, serResult]}>
+      <Graph />
+      <Sidebar />
+    </Context.Provider>
   )
 }
 

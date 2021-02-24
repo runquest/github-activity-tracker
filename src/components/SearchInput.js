@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { searchForRepo } from '../data/api'
 import { Search } from 'semantic-ui-react'
 
@@ -55,7 +55,8 @@ const SearchInput = ({ onSelect }) => {
     setValue('')
   }
 
-  const handleResultSelection = (event, result) => {
+  const handleResultSelection = (event, { result }) => {
+    console.log('HANDLE RESULT', result)
     onSelect(result)
     setPlaceholder('Search a GitHub Repository...')
     setValue('')
