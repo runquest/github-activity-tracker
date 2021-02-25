@@ -1,3 +1,5 @@
+ToDo:
+
 1. create react app, webpack, parcell, rollup - heaveier, more opinoinated, parcell-more independance, lightwaeight app
 2. sass and less - preprocessors
 

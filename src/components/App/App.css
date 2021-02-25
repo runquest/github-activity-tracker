@@ -1,0 +1,7 @@
+.App {
+  font-family: Roboto;
+  width: 1440px;
+  height: 900px;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,12 @@
+.Graph {
+  margin: 80px;
+  box-sizing: border-box;
+  width: 854px;
+  height: 786px;
+  background: #fff;
+}
+
+.LineChart {
+  border-bottom: 5px solid black;
+  border-left: 5px solid black;
+}

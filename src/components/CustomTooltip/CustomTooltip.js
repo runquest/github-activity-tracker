@@ -1,6 +1,5 @@
 import React from 'react'
 import { GitCommit } from 'react-feather'
-import '../../index.css'
 import './CustomTooltip.css'
 
 const CustomTooltip = ({ active, payload, label }) => {

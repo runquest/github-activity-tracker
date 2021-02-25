@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
 import { Context } from '../Context'
-import '../../index.css'
 import './SearchInput.css'
 
 const SearchInput = () => {

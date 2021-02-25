@@ -3,8 +3,6 @@ import { Context } from '../Context'
 import { List } from 'semantic-ui-react'
 import SelectedItem from '../SelectedItem'
 import EmptyResultContainer from '../EmptyResultContainer'
-
-import '../../index.css'
 import './Results.css'
 
 const Results = () => {

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Trash, Star } from 'react-feather'
 import Moment from 'react-moment'
-
-import '../../index.css'
 import './SelectedItem.css'
 
 const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {

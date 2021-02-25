@@ -3,8 +3,6 @@ import { LineChart, Line, Tooltip } from 'recharts'
 import Moment from 'react-moment'
 import { Context } from '../Context'
 import CustomTooltip from '../CustomTooltip'
-
-import '../../index.css'
 import './Graph.css'
 
 const Graph = () => {
@@ -13,8 +11,6 @@ const Graph = () => {
   return (
     <div className="Graph">
       <LineChart className="LineChart" width={700} height={393} data={fruit}>
-        {/* <XAxis tickLine={true} dataKey="" interval={'preserveStart'} /> */}
-        {/* <YAxis tickLine={false} /> */}
         <Tooltip content={<CustomTooltip />} />
         {fruit.map((item) => (
           <Line
