@@ -48,7 +48,7 @@ module.exports = {
       // },
       {
         // test: /\.s[ac]ss$/i,
-        test: /\.(sass|less|css)$/,
+        test: /\.(sass|css)$/,
         use: [
           // Creates `style` nodes from JS strings
           'style-loader',
