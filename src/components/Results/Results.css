@@ -1,0 +1,7 @@
+.ui.list.ResultsList {
+  background: inherit;
+  box-sizing: border-box;
+  padding: 0;
+  width: 410px;
+  margin: 0 32px;
+}

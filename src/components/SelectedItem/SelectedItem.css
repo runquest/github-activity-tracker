@@ -1,0 +1,103 @@
+.inactive {
+  opacity: 0.3;
+}
+
+.SelectedItem {
+  opacity: 1;
+  margin-bottom: 8px;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #272736;
+  box-shadow: inset 8px 0px 0px #d65c5c;
+  height: 80px;
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SelectedItem[wobble='1'] {
+  animation: wobble 1s 1;
+}
+
+.SelectedItem:hover {
+  cursor: pointer;
+}
+
+.SelectedItem.Inactive {
+  opacity: 0.3;
+}
+
+.SelectedItemMetadata {
+  padding-left: 12px;
+  width: 375px;
+}
+
+.SelectedItemTopRow {
+  height: 24px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #bfbdd9;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.SelectedItemBottomRow {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 4px 4px 4px 0;
+  color: #fff;
+}
+
+.Starred {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 4px 8px 0 8px;
+  color: #fff;
+}
+
+.Updated {
+  font-weight: 400;
+  color: #bfbdd9;
+}
+
+.Owner {
+  padding-right: 4px;
+}
+
+.Repo {
+  font-family: 'Apercu  Roboto';
+  padding-left: 4px;
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
