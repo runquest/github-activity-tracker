@@ -1,31 +1,30 @@
 import React, { useState, useContext } from 'react'
-import { Context } from '../Context'
+import { AppContext } from '../AppContext'
 import { List } from 'semantic-ui-react'
 import SelectedItem from '../SelectedItem'
 import EmptyResultContainer from '../EmptyResultContainer'
 import './Results.css'
 
 const Results = () => {
-  const [fruit, setFruits] = useContext(Context)
-  const [chosen, setChosen] = useState(null)
+  const context = useContext(AppContext)
 
-  if (!fruit || fruit.length < 1) {
+  if (!context.fruit || context.fruit.length < 1) {
     return <EmptyResultContainer />
   }
 
   return (
     <List className="ResultsList">
-      {fruit.map((item, index) => (
+      {context.fruit.map((item, index) => (
         <SelectedItem
-          active={item === chosen || !chosen}
-          onEnter={() => setChosen(item)}
-          onLeave={() => setChosen(null)}
+          active={item === context.chosen || !context.chosen}
+          onEnter={() => context.setChosen(item)}
+          onLeave={() => context.setChosen(null)}
           key={Math.random() * 1000}
           info={item}
           onClick={() => {
-            fruit.splice(index, 1)
-            setFruits(fruit)
-            console.log('DONE')
+            const modFruit = [...context.fruit]
+            modFruit.splice(index, 1)
+            context.setFruits(modFruit)
           }}
         />
       ))}

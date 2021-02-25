@@ -54,7 +54,7 @@ const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
           </span>
         </div>
       </div>
-      <div style={{ display: hover === 0 ? 'block' : 'none' }}>
+      <div>
         <Trash size={14} color={'#fff'} />
       </div>
     </div>

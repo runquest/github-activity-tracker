@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { Context } from '../Context.js'
+import { AppProvider } from '../AppContext.js'
 import Graph from '../Graph'
 import Sidebar from '../Sidebar'
 import './App.css'
 
 const App = () => {
-  const [fruit, setFruits] = useState([])
+  // const [fruit, setFruit] = useState([])
+  // const [chosen, setChosen] = useState(null)
 
   return (
-    <Context.Provider value={[fruit, setFruits]}>
+    <AppProvider>
       <div className="App">
         <Graph />
         <Sidebar />
       </div>
-    </Context.Provider>
+    </AppProvider>
   )
 }
 

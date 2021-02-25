@@ -1,19 +1,32 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { LineChart, Line, Tooltip } from 'recharts'
 import Moment from 'react-moment'
-import { Context } from '../Context'
+import { AppContext } from '../AppContext'
 import CustomTooltip from '../CustomTooltip'
 import './Graph.css'
 
 const Graph = () => {
-  const [fruit, setFruits] = useContext(Context)
-  if (!fruit) return <div className="Graph"></div>
+  const context = useContext(AppContext)
+
+  if (!context.fruit) return <div className="Graph"></div>
+  console.log('GRAPH', context.chosen)
+
   return (
     <div className="Graph">
-      <LineChart className="LineChart" width={700} height={393} data={fruit}>
+      <LineChart
+        className="LineChart"
+        width={700}
+        height={393}
+        data={context.fruit}
+      >
         <Tooltip content={<CustomTooltip />} />
-        {fruit.map((item) => (
+        {context.fruit.map((item) => (
           <Line
+            className={
+              context.chosen === null || context.chosen === item
+                ? ''
+                : 'Inactive'
+            }
             type="monotone"
             activeDot={{ r: 8 }}
             dataKey="total"

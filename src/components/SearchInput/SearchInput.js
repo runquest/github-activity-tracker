@@ -2,11 +2,11 @@ import _ from 'lodash'
 import React, { useState, useEffect, useContext } from 'react'
 import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
-import { Context } from '../Context'
+import { AppContext } from '../AppContext'
 import './SearchInput.css'
 
 const SearchInput = () => {
-  const [fruit, setFruit] = useContext(Context)
+  const context = useContext(AppContext)
   const [active, setActive] = useState(false)
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState({})
@@ -47,7 +47,7 @@ const SearchInput = () => {
   const handleResultSelection = (event, { result }) => {
     getRepoCommitActivity(result).then((commits) => {
       result.commits = commits
-      setFruit(() => [...fruit, result])
+      context.setFruit(() => [...context.fruit, result])
     })
     setPlaceholder('Search a GitHub Repository...')
     setValue('')
