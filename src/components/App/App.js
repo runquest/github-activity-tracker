@@ -3,7 +3,7 @@ import { Context } from '../Context.js'
 import Graph from '../Graph'
 import Sidebar from '../Sidebar'
 import '../../index.css'
-import './App.css'
+import './App.scss'
 
 const App = () => {
   const [fruit, setFruits] = useState([])

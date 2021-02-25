@@ -5,7 +5,7 @@ import { Context } from '../Context'
 import CustomTooltip from '../CustomTooltip'
 
 import '../../index.css'
-import './Graph.css'
+import './Graph.scss'
 
 const Graph = () => {
   const [fruit, setFruits] = useContext(Context)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { GitCommit } from 'react-feather'
 import '../../index.css'
-import './CustomTooltip.css'
+import './CustomTooltip.scss'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {

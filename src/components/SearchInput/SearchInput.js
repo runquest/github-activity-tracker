@@ -4,7 +4,8 @@ import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
 import { Context } from '../Context'
 import '../../index.css'
-import './SearchInput.css'
+import './SearchInput.scss'
+// import 'semantic-ui-css/semantic.min.css'
 
 const SearchInput = () => {
   const [fruit, setFruit] = useContext(Context)
@@ -56,6 +57,7 @@ const SearchInput = () => {
 
   return (
     <Search
+      style={{ width: '410px' }}
       placeholder={placeholder}
       loading={loading}
       onResultSelect={handleResultSelection}

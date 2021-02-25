@@ -5,7 +5,7 @@ import SelectedItem from '../SelectedItem'
 import EmptyResultContainer from '../EmptyResultContainer'
 
 import '../../index.css'
-import './Results.css'
+import './Results.scss'
 
 const Results = () => {
   const [fruit, setFruits] = useContext(Context)

@@ -3,7 +3,7 @@ import { Trash, Star } from 'react-feather'
 import Moment from 'react-moment'
 
 import '../../index.css'
-import './SelectedItem.css'
+import './SelectedItem.scss'
 
 const SelectedItem = ({ active, info, onEnter, onLeave, onClick }) => {
   const [hover, setHover] = useState(0)

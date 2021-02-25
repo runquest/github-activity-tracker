@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 module.exports = {
   // Webpack configuration goes here
@@ -9,42 +9,54 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[hash].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   resolve: {
     alias: {
-      "react-dom": "@hot-loader/react-dom",
-    }
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
-
       // First Rule
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
+      // {
+      //   test: /\.s[ac]ss$/i,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     { loader: 'sass-loader' },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: {
+      //           exportLocalsConvention: 'camelCaseOnly',
+      //           namedExport: true,
+      //           compileType: 'module',
+      //           auto: false,
+      //           exportGlobals: true,
+      //           // compileType?, auto?, mode?, localIdentName?, localIdentContext?, localIdentHashPrefix?, localIdentRegExp?, getLocalIdent?, namedExport?, exportGlobals?, exportLocalsConvention?, exportOnlyLocals?
+      //         },
+      //         sourceMap: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.css$/,
+        // test: /\.s[ac]ss$/i,
+        test: /\.(sass|less|css)$/,
         use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                exportLocalsConvention: "camelCaseOnly",
-                namedExport: true,
-                compileType: "module",
-                auto: false,
-                exportGlobals: true,
-                // compileType?, auto?, mode?, localIdentName?, localIdentContext?, localIdentHashPrefix?, localIdentRegExp?, getLocalIdent?, namedExport?, exportGlobals?, exportLocalsConvention?, exportOnlyLocals?
-              },
-              sourceMap: true
-            }
-          }
-        ]
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -73,7 +85,7 @@ module.exports = {
       // {
       //   test: /\.css$/i,
       //   use: [
-      //     'style-loader', 
+      //     'style-loader',
       //     {
       //       loader: 'css-loader',
       //       options: {
@@ -96,19 +108,19 @@ module.exports = {
       //     }
       //   ]
       // }
-    ]
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    })
+      template: 'public/index.html',
+    }),
   ],
   devServer: {
     host: 'localhost',
     port: port,
     historyApiFallback: true,
     open: true,
-    hot: true
-  }
-};
+    hot: true,
+  },
+}
