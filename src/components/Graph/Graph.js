@@ -34,7 +34,7 @@ const Graph = () => {
   return (
     <div className="Graph">
       <ResponsiveContainer>
-        <LineChart className="LineChart" width={700} height={393} data={data}>
+        <LineChart className="LineChart" data={data}>
           <Tooltip content={<CustomTooltip />} />
           <XAxis dataKey=" " tickCount={52} />
           <YAxis />

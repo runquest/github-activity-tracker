@@ -1,10 +1,10 @@
 html {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background: #37374a;
+  /* background: #37374a; */
 }
 
 .App {
@@ -14,4 +14,6 @@ html {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
