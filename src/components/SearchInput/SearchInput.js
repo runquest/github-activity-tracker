@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
 import { AppContext } from '../AppContext'
+import { SearchIcon } from 'react-feather'
 import './SearchInput.css'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -56,6 +57,7 @@ const SearchInput = () => {
 
   return (
     <Search
+      className="SearchInput"
       placeholder={placeholder}
       loading={loading}
       onResultSelect={handleResultSelection}

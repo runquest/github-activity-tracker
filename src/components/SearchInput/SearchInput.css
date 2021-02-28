@@ -1,3 +1,29 @@
+.ui.fluid.search.SearchInput {
+  margin: 80px 32px 16px 32px;
+}
+
+.ui.fluid.search.SearchInput input.prompt {
+  width: 474px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.ui.fluid.search.SearchInput input.prompt::placeholder {
+  width: 399px;
+  height: 60px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+
+  color: #8383af;
+}
+
+/* 
 .ui.search {
   width: 410px;
   padding: 0 32px;
@@ -54,7 +80,6 @@ input[type='text'].prompt::placeholder {
 
   color: #8383af;
 
-  /* Inside Auto Layout */
 
   flex: none;
   order: 1;
@@ -70,4 +95,4 @@ input[type='text'].prompt::placeholder {
   height: 44px;
   display: flex;
   align-items: center;
-}
+} */
