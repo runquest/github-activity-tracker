@@ -13,8 +13,13 @@ export const searchForRepo = async (query) => {
     },
   )
 
+  if (!response.ok) {
+    const message = `Ooops. Do not panick it is just ${response.status}. Refresh. Try again.`
+    throw new Error(message)
+  }
+
   const data = await response.json()
-  return data.items.map((item) => modified(item)).slice(0, 3)
+  return data.items.map((item) => modified(item))
 }
 
 export const getRepoCommitActivity = async ({ owner, name }) => {
@@ -26,6 +31,11 @@ export const getRepoCommitActivity = async ({ owner, name }) => {
       },
     },
   )
+
+  if (!response.ok) {
+    const message = `Ooops. Do not panick it is just ${response.status}. Refresh. Try again.`
+    throw new Error(message)
+  }
 
   const data = await response.json()
   return data

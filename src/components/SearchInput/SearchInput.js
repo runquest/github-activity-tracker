@@ -31,10 +31,16 @@ const SearchInput = () => {
     timeoutRef.current = setTimeout(() => {
       if (value.length < 3) return
       const re = new RegExp(_.escapeRegExp(value), 'i') //why do I need this regex here?
-      searchForRepo(re).then((items) => {
-        setLoading(false)
-        setResults(items)
-      })
+      searchForRepo(re)
+        .then((items) => {
+          setLoading(false)
+          setResults(items)
+        })
+        .catch((message) => {
+          setLoading(false)
+          setValue('')
+          setPlaceholder(message)
+        })
     }, 300)
   }, [value])
 
@@ -50,10 +56,14 @@ const SearchInput = () => {
   }
 
   const handleResultSelection = (event, { result }) => {
-    getRepoCommitActivity(result).then((commits) => {
-      result.commits = commits
-      context.setFruit(() => [...context.fruit, result])
-    })
+    getRepoCommitActivity(result)
+      .then((commits) => {
+        result.commits = commits
+        context.setFruit(() => [...context.fruit, result])
+      })
+      .catch((error) => {
+        setPlaceholder(error)
+      })
     setPlaceholder('Search a GitHub Repository...')
     setValue('')
   }
