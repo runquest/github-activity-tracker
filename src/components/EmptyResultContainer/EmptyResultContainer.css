@@ -1,8 +1,7 @@
 .EmptyStateContainer {
-  height: 208px;
-  width: 410px;
-  margin-right: 32px;
-  margin-left: 32px;
+  width: 473px;
+  height: 236px;
+  margin: 0 32px;
   display: flex;
   border-radius: 16px;
   background: #242432;
@@ -13,13 +12,26 @@
 
 .EmptyStateMessage {
   width: 338px;
-  border-radius: nullpx;
+  height: 192px;
+
   font-family: Roboto;
-  font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
+  font-size: 18px;
   line-height: 24px;
-  letter-spacing: 0em;
+  /* or 133% */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+
   color: #bcbcf2;
+}
+
+.SearchIcon {
+  color: #bcbcf2;
+  margin-bottom: 16px;
+  /* transform: rotate(-23.02deg); */
 }

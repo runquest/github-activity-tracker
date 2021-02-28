@@ -4,6 +4,7 @@ import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
 import { AppContext } from '../AppContext'
 import './SearchInput.css'
+import 'semantic-ui-css/semantic.min.css'
 
 const SearchInput = () => {
   const context = useContext(AppContext)
