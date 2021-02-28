@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
 module.exports = {
   // Webpack configuration goes here
@@ -9,22 +9,21 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.[hash].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   resolve: {
     alias: {
-      "react-dom": "@hot-loader/react-dom",
-    }
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
-
       // First Rule
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/,
@@ -34,17 +33,17 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                exportLocalsConvention: "camelCaseOnly",
+                exportLocalsConvention: 'camelCaseOnly',
                 namedExport: true,
-                compileType: "module",
+                compileType: 'module',
                 auto: false,
                 exportGlobals: true,
                 // compileType?, auto?, mode?, localIdentName?, localIdentContext?, localIdentHashPrefix?, localIdentRegExp?, getLocalIdent?, namedExport?, exportGlobals?, exportLocalsConvention?, exportOnlyLocals?
               },
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -65,50 +64,19 @@ module.exports = {
           },
         ],
       },
-      // Second Rule
-      // {
-      //   test: /\.css$/i,
-      //   use: ['style-loader', 'css-loader'],
-      // },
-      // {
-      //   test: /\.css$/i,
-      //   use: [
-      //     'style-loader', 
-      //     {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: {
-      //           compileType: 'module',
-      //           mode: 'local',
-      //           exportGlobals: true,
-      //           localIdentName: '[local]',
-      //           // localIdentContext
-      //           // localIdentHashPrefix: undefined,
-      //           // localIdentRegExp: undefined,
-      //           // getLocalIdent: undefined,
-      //           namedExport: true,
-      //           exportLocalsConvention: 'camelCaseOnly',
-      //           exportOnlyLocals: false
-      //         },
-      //         sourceMap: true,
-      //         importLoaders: 1
-      //       }
-      //     }
-      //   ]
-      // }
-    ]
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    })
+      template: 'public/index.html',
+    }),
   ],
   devServer: {
     host: 'localhost',
     port: port,
     historyApiFallback: true,
     open: true,
-    hot: true
-  }
-};
+    hot: true,
+  },
+}

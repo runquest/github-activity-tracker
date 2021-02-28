@@ -1,14 +1,14 @@
 .Graph {
-  margin: 80px;
   box-sizing: border-box;
   width: 854px;
-  height: 786px;
-  background: #fff;
+  height: 900px;
+  padding: 32px;
+  padding-left: 24px;
 }
 
 .LineChart {
-  border-bottom: 5px solid black;
-  border-left: 5px solid black;
+  /* border-bottom: 1px solid black; */
+  /* border-left: 1px solid black; */
 }
 
 .Inactive {

@@ -16,15 +16,15 @@ const Results = () => {
     <List className="ResultsList">
       {context.fruit.map((item, index) => (
         <SelectedItem
-          active={item === context.chosen || !context.chosen}
+          chosen={context.chosen}
           onEnter={() => context.setChosen(item)}
           onLeave={() => context.setChosen(null)}
-          key={Math.random() * 1000}
-          info={item}
+          key={item.id}
+          item={item}
           onClick={() => {
             const modFruit = [...context.fruit]
             modFruit.splice(index, 1)
-            context.setFruits(modFruit)
+            context.setFruit(modFruit)
           }}
         />
       ))}

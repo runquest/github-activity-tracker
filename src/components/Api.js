@@ -27,33 +27,7 @@ export const getRepoCommitActivity = async ({ owner, name }) => {
     },
   )
 
-  /**
-
-  function getMonday(d) {
-  d = new Date(d);
-  var day = d.getDay(),
-      diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
-  return new Date(d.setDate(diff));
-}
-
-getMonday(new Date()); 
-new Date(dateStr).getTime();
-
-  let d = new Date(1613260800*1000);
-  let diff = d.getDate() - d.getDay()
-  let w = new Date(d.setDate(diff))
-  
-  new Date().getDate() - new Date(1613260800*1000).getDay()
-  
-  new Date()
-   */
-
   const data = await response.json()
-  // const modifiedData = data.map((index, item) => {
-  //   console.log('index', index)
-  //   console.log('item', item)
-  // })
-
   return data
 }
 

@@ -1,5 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { LineChart, Line, Tooltip } from 'recharts'
+import {
+  XAxis,
+  YAxis,
+  LineChart,
+  Line,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 import Moment from 'react-moment'
 import { AppContext } from '../AppContext'
 import CustomTooltip from '../CustomTooltip'
@@ -9,35 +16,43 @@ const Graph = () => {
   const context = useContext(AppContext)
 
   if (!context.fruit) return <div className="Graph"></div>
-  console.log('GRAPH', context.chosen)
+
+  const data = new Array(51)
+
+  context.fruit.forEach((item) => {
+    for (let j = 0; j < item.commits.length - 1; j++) {
+      const commitWeek = item.commits[j].week
+      if (typeof data[j] === 'undefined') {
+        const dataPoint = new Object()
+        dataPoint.week = commitWeek.toString()
+        data[j] = dataPoint
+      }
+      data[j][item.name] = item.commits[j].total
+    }
+  })
 
   return (
     <div className="Graph">
-      <LineChart
-        className="LineChart"
-        width={700}
-        height={393}
-        data={context.fruit}
-      >
-        <Tooltip content={<CustomTooltip />} />
-        {context.fruit.map((item) => (
-          <Line
-            className={
-              context.chosen === null || context.chosen === item
-                ? ''
-                : 'Inactive'
-            }
-            type="monotone"
-            activeDot={{ r: 8 }}
-            dataKey="total"
-            data={item.commits}
-            name={item.color}
-            stroke={`#${item.color}`}
-            strokeWidth={3}
-            key={Math.random()}
-          />
-        ))}
-      </LineChart>
+      <ResponsiveContainer>
+        <LineChart className="LineChart" data={data}>
+          <Tooltip content={<CustomTooltip />} />
+          <XAxis dataKey=" " tickCount={52} />
+          <YAxis />
+          <Tooltip cursor={<CustomTooltip />} />
+          {context.fruit.map((item) => (
+            <Line
+              className={
+                item === context.chosen || !context.chosen ? '' : 'Inactive'
+              }
+              type="monotone"
+              dataKey={item.name}
+              stroke={`#${item.color}`}
+              strokeWidth={3}
+              key={item.id}
+            />
+          ))}
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   )
 }
