@@ -6,6 +6,7 @@ import { AppContext } from '../AppContext'
 import { SearchIcon } from 'react-feather'
 import './SearchInput.css'
 import 'semantic-ui-css/semantic.min.css'
+import OwnerRepoItem from '../OwnerRepoItem'
 
 const SearchInput = () => {
   const context = useContext(AppContext)
@@ -21,9 +22,7 @@ const SearchInput = () => {
 
   const renderSearchResult = ({ name, owner }) => {
     return (
-      <div className={'SuggestedItem'}>
-        {owner} /<span class="Repo">{name}</span>
-      </div>
+      <OwnerRepoItem className="SearchSuggestion" first={owner} second={name} />
     )
   }
 
