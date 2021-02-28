@@ -19,8 +19,12 @@ const SearchInput = () => {
 
   const timeoutRef = React.useRef()
 
-  const renderSearchResult = ({ title }) => {
-    return <div className={'SuggestedItem'}>{title}</div>
+  const renderSearchResult = ({ name, owner }) => {
+    return (
+      <div className={'SuggestedItem'}>
+        {owner} /<span class="Repo">{name}</span>
+      </div>
+    )
   }
 
   useEffect(() => {

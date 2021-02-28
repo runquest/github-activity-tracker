@@ -23,6 +23,97 @@
   color: #8383af;
 }
 
+.ui.fluid.search.SearchInput > .results {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui.fluid.search.SearchInput > .results .result {
+  height: 44px;
+  max-height: 44px;
+  position: relative;
+}
+
+.ui.fluid.search.SearchInput > .results .result:hover {
+  background: #ececf7;
+  cursor: pointer;
+}
+
+.SuggestedItem {
+  width: 399px;
+  max-width: 399px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  font-family: 'Apercu', 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: #8383af;
+
+  position: absolute;
+  top: 50%;
+  height: 22px;
+  margin-top: -11px;
+}
+
+.SuggestedItem > .Repo {
+  font-family: 'Avenir Next', 'Roboto';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000;
+}
+
+/* 
+
+  font-family: Avenir Next;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+
+
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+
+font-family: Apercu;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: left;
+
+
+
+
+ */
+
 /* 
 .ui.search {
   width: 410px;
