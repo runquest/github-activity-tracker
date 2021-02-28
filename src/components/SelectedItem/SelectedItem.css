@@ -87,6 +87,14 @@
   padding-left: 4px;
 }
 
+.TrashIcon {
+  display: none;
+}
+
+.TrashIcon.Active {
+  display: block;
+}
+
 @keyframes wobble {
   25% {
     transform: rotate(15deg);
