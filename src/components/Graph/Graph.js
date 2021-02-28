@@ -41,9 +41,13 @@ const Graph = () => {
           <Tooltip cursor={<CustomTooltip />} />
           {context.fruit.map((item) => (
             <Line
+              className={
+                item === context.chosen || !context.chosen ? '' : 'Inactive'
+              }
               type="monotone"
               dataKey={item.name}
               stroke={`#${item.color}`}
+              strokeWidth={3}
               key={item.id}
             />
           ))}
