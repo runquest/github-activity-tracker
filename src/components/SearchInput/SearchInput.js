@@ -55,7 +55,20 @@ const SearchInput = () => {
     setValue('')
   }
 
+  const isDuplicate = ({ id }) => {
+    const array = context.fruit.map((f) => f.id)
+    array.push(id)
+    const set = new Set(array)
+    return set.size !== array.length
+  }
+
   const handleResultSelection = (event, { result }) => {
+    if (isDuplicate(result)) {
+      setValue('')
+      setLoading(false)
+      return
+    }
+
     getRepoCommitActivity(result)
       .then((commits) => {
         result.commits = commits

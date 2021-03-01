@@ -50,7 +50,6 @@ const SelectedItem = ({ chosen, item, onEnter, onLeave, onClick }) => {
           <span className={'StarIcon'}>
             <Star size={16} color={'#bcbcf2'} />
           </span>
-          {/* <span className={'Starred'}>{item.stars.toLocaleString()}</span> */}
           <span className={'Starred'}>{numberOfStars(item.stars)}</span>
           <span className={'Updated'}>
             Updated
