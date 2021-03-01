@@ -7,7 +7,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import Moment from 'react-moment'
 import { AppContext } from '../AppContext'
 import CustomTooltip from '../CustomTooltip'
 import './Graph.css'
@@ -38,7 +37,6 @@ const Graph = () => {
           <Tooltip content={<CustomTooltip />} />
           <XAxis dataKey=" " tickCount={52} />
           <YAxis />
-          <Tooltip cursor={<CustomTooltip />} />
           {context.fruit.map((item) => (
             <Line
               className={
