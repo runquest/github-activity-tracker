@@ -1,19 +1,8 @@
-html {
-  display: flex;
-  /* height: 100vh; */
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  /* background: #37374a; */
-}
-
 .App {
   font-family: Roboto;
   width: 1440px;
   height: 900px;
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
 }

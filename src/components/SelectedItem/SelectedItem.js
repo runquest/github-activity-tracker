@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Trash, Star } from 'react-feather'
 import Moment from 'react-moment'
 import './SelectedItem.css'
+import OwnerRepoItem from '../OwnerRepoItem'
 
 const SelectedItem = ({ chosen, item, onEnter, onLeave, onClick }) => {
   const customBoxShadow = {
@@ -20,6 +21,15 @@ const SelectedItem = ({ chosen, item, onEnter, onLeave, onClick }) => {
     onClick()
   }
 
+  const numberOfStars = (number) => {
+    if (number < 1000) {
+      return number
+    }
+
+    let thousands = number / 1000
+    return `${thousands.toFixed(1)} k`
+  }
+
   return (
     <div
       className={
@@ -31,15 +41,16 @@ const SelectedItem = ({ chosen, item, onEnter, onLeave, onClick }) => {
       onClick={handleOnClick}
     >
       <div className={'SelectedItemMetadata'}>
-        <div className={'SelectedItemTopRow'}>
-          <span className={'Owner'}>{item.owner}</span>/
-          <span className={'Repo'}>{item.name}</span>
-        </div>
+        <OwnerRepoItem
+          className={'SelectedItemTopRow'}
+          first={item.owner}
+          second={item.name}
+        />
         <div className={'SelectedItemBottomRow'}>
-          <span>
-            <Star size={14} color={'#bcbcf2'} />
+          <span className={'StarIcon'}>
+            <Star size={16} color={'#bcbcf2'} />
           </span>
-          <span className={'Starred'}>{item.stars}</span>
+          <span className={'Starred'}>{numberOfStars(item.stars)}</span>
           <span className={'Updated'}>
             Updated
             <span style={{ paddingLeft: '4px' }}>
@@ -49,7 +60,7 @@ const SelectedItem = ({ chosen, item, onEnter, onLeave, onClick }) => {
         </div>
       </div>
       <div className={item === chosen ? 'TrashIcon Active' : 'TrashIcon'}>
-        <Trash size={14} color={'#fff'} />
+        <Trash size={24} color={'#fff'} />
       </div>
     </div>
   )

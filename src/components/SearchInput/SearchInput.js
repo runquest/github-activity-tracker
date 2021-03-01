@@ -3,7 +3,10 @@ import React, { useState, useEffect, useContext } from 'react'
 import { searchForRepo, getRepoCommitActivity } from '../Api'
 import { Search } from 'semantic-ui-react'
 import { AppContext } from '../AppContext'
+import { SearchIcon } from 'react-feather'
 import './SearchInput.css'
+import 'semantic-ui-css/semantic.min.css'
+import OwnerRepoItem from '../OwnerRepoItem'
 
 const SearchInput = () => {
   const context = useContext(AppContext)
@@ -17,8 +20,10 @@ const SearchInput = () => {
 
   const timeoutRef = React.useRef()
 
-  const renderSearchResult = ({ title }) => {
-    return <div className={'SuggestedItem'}>{title}</div>
+  const renderSearchResult = ({ name, owner }) => {
+    return (
+      <OwnerRepoItem className="SearchSuggestion" first={owner} second={name} />
+    )
   }
 
   useEffect(() => {
@@ -26,10 +31,16 @@ const SearchInput = () => {
     timeoutRef.current = setTimeout(() => {
       if (value.length < 3) return
       const re = new RegExp(_.escapeRegExp(value), 'i') //why do I need this regex here?
-      searchForRepo(re).then((items) => {
-        setLoading(false)
-        setResults(items)
-      })
+      searchForRepo(re)
+        .then((items) => {
+          setLoading(false)
+          setResults(items)
+        })
+        .catch((message) => {
+          setLoading(false)
+          setValue('')
+          setPlaceholder(message)
+        })
     }, 300)
   }, [value])
 
@@ -44,17 +55,35 @@ const SearchInput = () => {
     setValue('')
   }
 
+  const isDuplicate = ({ id }) => {
+    const array = context.fruit.map((f) => f.id)
+    array.push(id)
+    const set = new Set(array)
+    return set.size !== array.length
+  }
+
   const handleResultSelection = (event, { result }) => {
-    getRepoCommitActivity(result).then((commits) => {
-      result.commits = commits
-      context.setFruit(() => [...context.fruit, result])
-    })
+    if (isDuplicate(result)) {
+      setValue('')
+      setLoading(false)
+      return
+    }
+
+    getRepoCommitActivity(result)
+      .then((commits) => {
+        result.commits = commits
+        context.setFruit(() => [...context.fruit, result])
+      })
+      .catch((error) => {
+        setPlaceholder(error)
+      })
     setPlaceholder('Search a GitHub Repository...')
     setValue('')
   }
 
   return (
     <Search
+      className="SearchInput"
       placeholder={placeholder}
       loading={loading}
       onResultSelect={handleResultSelection}

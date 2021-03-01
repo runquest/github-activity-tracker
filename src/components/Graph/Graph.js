@@ -7,7 +7,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
-import Moment from 'react-moment'
 import { AppContext } from '../AppContext'
 import CustomTooltip from '../CustomTooltip'
 import './Graph.css'
@@ -33,26 +32,23 @@ const Graph = () => {
 
   return (
     <div className="Graph">
-      <ResponsiveContainer>
-        <LineChart className="LineChart" data={data}>
-          <Tooltip content={<CustomTooltip />} />
-          <XAxis dataKey=" " tickCount={52} />
-          <YAxis />
-          <Tooltip cursor={<CustomTooltip />} />
-          {context.fruit.map((item) => (
-            <Line
-              className={
-                item === context.chosen || !context.chosen ? '' : 'Inactive'
-              }
-              type="monotone"
-              dataKey={item.name}
-              stroke={`#${item.color}`}
-              strokeWidth={3}
-              key={item.id}
-            />
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart className="LineChart" width={854} height={706} data={data}>
+        <Tooltip content={<CustomTooltip />} />
+        <XAxis dataKey=" " tickCount={52} />
+        <YAxis />
+        {context.fruit.map((item) => (
+          <Line
+            className={
+              item === context.chosen || !context.chosen ? '' : 'Inactive'
+            }
+            type="monotone"
+            dataKey={item.name}
+            stroke={`#${item.color}`}
+            strokeWidth={3}
+            key={item.id}
+          />
+        ))}
+      </LineChart>
     </div>
   )
 }

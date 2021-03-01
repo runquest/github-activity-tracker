@@ -6,7 +6,7 @@ const EmptyResultContainer = () => {
   return (
     <div className="EmptyStateContainer">
       <div className="EmptyStateMessage">
-        <Search color={'#BCBCF2'} size={32} style={{ marginBottom: '16px' }} />
+        <Search className="SearchIcon" strokeWidth={2} size={32} />
         <div>Search for a GitHub repository to populate graph</div>
       </div>
     </div>
